@@ -14,7 +14,7 @@ export function Router() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route index element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={
             <PrivateRoute>

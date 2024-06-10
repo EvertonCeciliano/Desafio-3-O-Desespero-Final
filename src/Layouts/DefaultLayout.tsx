@@ -11,20 +11,16 @@ export function DefaultLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {
- 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setUser(user.email); 
-        navigate("/checkout"); 
+        setUser(user.email);
       } else {
         setUser(null);
-        navigate("/login"); 
       }
     });
 
-    
     return () => unsubscribe();
-  }, [navigate]);
+  }, []);
 
   return (
     <div>

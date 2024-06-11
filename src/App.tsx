@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom"
 import { Router } from "./Routes/Router"
-
+import "./global.css"
 
 function App() {
  

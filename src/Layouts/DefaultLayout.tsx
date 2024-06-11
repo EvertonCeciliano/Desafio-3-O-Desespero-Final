@@ -1,5 +1,5 @@
-// DefaultLayout.tsx
-import React, { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseconfig";
 

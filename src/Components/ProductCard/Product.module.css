@@ -1,0 +1,43 @@
+.productCard{
+  height: 446px;
+  width: fit-content;
+  background-color: #F4F5F7;
+}
+
+.infos{
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-bottom: 36px;
+  gap:8px ;
+}
+
+.nameWrapper{
+  gap: 8px;
+}
+
+.nameWrapper h2{
+  color: #3A3A3A;
+}
+.nameWrapper p{
+  color: #898989;
+}
+
+.priceWrapper{
+
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+.priceWrapper .price{
+  color: #3a3a3a;
+  font-weight: 600;
+  font-size: 20px;
+}
+.priceDiscount{
+  text-decoration: line-through;
+  color: #B0B0B0;
+  
+}
+
+
+

@@ -1,4 +1,5 @@
 footer{
+  
   padding: 100px;
   flex-direction: column;
   margin: 0 auto;
@@ -9,6 +10,7 @@ footer{
 }
 
 .footerContainer{
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-block:48px ;
   display: flex;
@@ -71,6 +73,7 @@ li:hover{
 }
 
 .newsletterSection{
+ 
   margin-left: 72px;
   display: flex;
   flex-direction: column;
@@ -79,11 +82,11 @@ li:hover{
 
 .newsletterSection .inputWrapper{
   display: flex;
+  flex-wrap: wrap;
   gap: 11px;
 }
 
 .inputWrapper input{
-  
   border: none;
   width: 200px; 
   border-bottom: #000 1px solid;

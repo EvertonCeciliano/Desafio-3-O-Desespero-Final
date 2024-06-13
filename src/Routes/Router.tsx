@@ -24,7 +24,7 @@ export function Router() {
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="shop/:productId" element={<SingleProduct />} />
+          <Route path="product" element={<SingleProduct />} />
         </Route>
       </Routes>
     </AuthProvider>

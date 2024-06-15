@@ -15,16 +15,16 @@ export function Router() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path='/' element={<Home />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={
             <PrivateRoute>
               <Checkout />
             </PrivateRoute>
           } />
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<Login />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="product" element={<SingleProduct />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
         </Route>
       </Routes>
     </AuthProvider>

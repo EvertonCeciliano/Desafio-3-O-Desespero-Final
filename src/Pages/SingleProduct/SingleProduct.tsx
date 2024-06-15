@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from './SingleProduct.module.css';
-import { Product } from '../../Components/ProductCard/Product';
+
 import { Button } from '../../Components/Button/Button';
+
 
 export const SingleProduct: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -118,7 +119,7 @@ export const SingleProduct: React.FC = () => {
               <li>:</li>
             </ul>
             <ul>
-              <li>span SPASS001</li>
+              <li> SPASS001</li>
               <li>Sofa</li>
               <li>Sofa, Chair, Home, Shop</li>
               <li className={styles.share}>
@@ -169,10 +170,7 @@ export const SingleProduct: React.FC = () => {
       <div className={styles.relatedProducts}>
         <h2>Related Products</h2>
             <div className={styles.cardsWrapper}>
-              <Product/>
-              <Product/>
-              <Product/>
-              <Product/>
+            
             </div>
             <Button/>
       </div>

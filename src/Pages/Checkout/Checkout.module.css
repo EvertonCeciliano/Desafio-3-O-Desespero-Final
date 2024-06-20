@@ -1,0 +1,49 @@
+.checkout{
+  margin: auto;
+}
+
+.checkoutPage{
+  display: flex;
+  flex-direction: column;
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.smallInputs{
+display: flex;
+gap: 30px;
+}
+
+.inputWrapper{
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.checkout{
+  display: flex;
+}
+
+.smallInputs .inputWrapper input{
+  width: 211px;
+  border-radius: 10px;
+  border: 1px solid #9f9f9f;
+  height: 75px;
+  padding: 0 10px;
+}
+
+.inputWrapper input ,.adicionalInformation input{
+  width: 453px;
+  border-radius: 10px;
+  border: 1px solid #9f9f9f;
+  height: 75px;
+  padding: 0 10px;
+}
+
+.adicionalInformation{
+  margin-top: 66px;
+}

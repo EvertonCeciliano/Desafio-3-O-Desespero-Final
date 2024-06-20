@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Product, ProductData } from "../../Components/ProductCard/Product";
-import {Button} from "../../Components/Button/Button"; // Importando o componente Button corretamente
-import { ImageSlider } from "../../Components/ImageSlider/ImageSlider";
+import {Button} from "../../Components/Button/Button";
 import grid from "../../assets/grid.jpg";
 import styles from "./Home.module.css";
 import axios from "axios";
+import { Carousel } from "../../Components/ImageSlider/ImageSlider";
+
 
 export const Home: React.FC = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
@@ -14,7 +15,7 @@ export const Home: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://run.mocky.io/v3/7783f0b3-ebcf-4e2d-b63b-61e95a7e59b4"
+          "https://run.mocky.io/v3/affb51b5-4539-4912-80a4-f868e98bf7ca"
         );
         setProducts(response.data.products);
       } catch (error) {
@@ -30,7 +31,8 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <>
+    <> 
+
       <section className={styles.section1}>
         <div className={styles.cardSection1}>
           <h2>New Arrival</h2>
@@ -72,17 +74,17 @@ export const Home: React.FC = () => {
       <section className={styles.section3}>
         <h2>Our Products</h2>
         <div className={styles.productsWrapper}>
-          {products.slice(0, visibleCount).map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        </div>
-        <Button onClick={loadMoreProducts}>Load More</Button> 
+  {products && products.length > 0 && products.slice(0, visibleCount).map((product) => (
+    <Product key={product.id} product={product} />
+  ))}
+</div>
+        <Button onClick={loadMoreProducts}>Show More</Button>
       </section>
       <section className={styles.section4}>
-        <ImageSlider />
+      <Carousel/>
       </section>
       <section className={styles.section5}>
-        {/* Provisório (eu tenho que poupar tempo) */}
+
         <img src={grid} alt="Grid" />
       </section>
     </>

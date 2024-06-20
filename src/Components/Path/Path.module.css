@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  height: 316px;
+  text-align: center;
+  background-position: center center;
+  margin-bottom: 72px;
+  background-repeat: no-repeat;
+  background-image: url(https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/sectionsbg.png);
+}
+
+.header .logo {
+  width: 77px;
+  height: 77px;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.header h2 {
+  margin: auto;
+  margin-top: 0;
+  color: black;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.header p:nth-child(1) {
+  font-weight: 500;
+}
+
+.header p:nth-child(2) {
+  font-weight: 200;
+}
+
+.path {
+  margin: auto;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pathWrapper {
+  display: flex;
+  margin: auto;
+  gap: 6px;
+}

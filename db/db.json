@@ -1,0 +1,2075 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 2,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+   
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 3,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 4,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+            "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 5,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 6,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 150000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 7,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 7000000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 8,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 9,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 10,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 11,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 12,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 13,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 14,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 15,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 16,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 17,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 19,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 20,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 21,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 22,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 23,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 24,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 25,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 26,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 27,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 28,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 29,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 30,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 31,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 32,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 33,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 34,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 35,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 36,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+ 
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 37,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 38,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 39,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 40,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 41,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 42,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 43,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 44,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 45,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 46,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 47,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 48,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 49,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 50,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 51,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 52,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 53,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 54,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 55,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 56,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 57,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 58,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 59,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 60,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 61,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 62,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 63,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 64,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 65,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 66,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 67,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 68,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 69,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 70,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 71,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 72,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 73,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 74,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 75,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 76,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 77,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 78,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 79,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 80,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 81,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 82,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 83,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 84,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 85,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 86,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 87,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 88,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 89,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 90,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 91,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 92,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 93,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 94,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 95,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 96,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 97,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 98,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 99,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 100,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 101,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 102,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 103,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 104,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 105,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 106,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 107,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 108,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 109,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 110,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 111,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 112,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 113,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 114,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 115,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 116,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 117,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 118,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 119,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 120,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 121,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 122,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+       "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 123,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 124,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 125,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+          "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 126,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 127,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 128,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 129,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 130,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 131,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 132,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 133,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 134,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 135,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 136,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 137,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 138,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 139,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 140,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 141,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 142,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    },
+    {
+      "id": 143,
+      "SKU": "MUG001",
+      "name": "Muggo",
+      "description": "Small mug",
+      "price": 200000,
+     
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/muggo.png",
+      "onSale": true,
+      "discountPercentage": 20.0,
+      "isNew": true,
+      "category": "Mugs",
+      "tags": ["small", "cute", "kitchen"]
+    },
+    {
+      "id": 144,
+      "SKU": "BED001",
+      "name": "Pingky",
+      "description": "Cute bed set",
+      "price": 1000000,
+
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/pinkgky.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Beds",
+      "tags": ["cute", "bedroom", "furniture"]
+    },
+    {
+      "id": 145,
+      "SKU": "POT001",
+      "name": "Potty",
+      "description": "Minimalist flower pot",
+      "price": 500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/potty.png",
+      "onSale": false,
+      "discountPercentage": 0.0,
+      "isNew": true,
+      "category": "Decor",
+      "tags": ["minimalist", "flower", "decor"]
+    },
+    {
+      "id": 146,
+      "SKU": "CHA013",
+      "name": "Syltherine",
+      "description": "Stylish cafe chair",
+      "price": 2500000,
+      
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/Syltherine.png",
+      "onSale": true,
+      "discountPercentage": 30.0,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["modern", "stylish", "furniture"]
+    },
+    {
+      "id": 147,
+      "SKU": "CHA014",
+      "name": "Leviosa",
+      "description": "Stylish cafe chair",
+      "price":2500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/leviosa.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": false,
+      "category": "Chairs",
+      "tags": ["classic", "elegant", "furniture"]
+    },
+    {
+      "id": 148,
+      "SKU": "LS001",
+      "name": "Lolito",
+      "description": "Luxury big sofa",
+      "price": 7000000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/lolito.png",
+      "onSale": true,
+      "discountPercentage": 50.0,
+      "isNew": false,
+      "category": "Sofa",
+      "tags": ["luxury", "comfortable", "furniture"]
+    },
+    {
+      "id": 149,
+      "SKU": "TAB002",
+      "name": "Respira",
+      "description": "Outdoor bar table and stool",
+      "price": 500000,
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/respira.png",
+      "onSale": false,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Tables and Stools",
+      "tags": ["outdoor", "bar", "furniture"]
+    },
+    {
+      "id": 150,
+      "SKU": "LAM001",
+      "name": "Grifo",
+      "description": "Night lamp",
+      "price": 1500000,
+    
+      "image": "https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/products/grifo.png",
+      "onSale": true,
+      "discountPercentage": null,
+      "isNew": true,
+      "category": "Lamps",
+      "tags": ["night", "modern", "lighting"]
+    }]}

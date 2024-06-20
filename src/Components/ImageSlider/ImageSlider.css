@@ -1,0 +1,14 @@
+import '@splidejs/react-splide/css';
+
+.splide-custom .splide__slide{
+  transform: scale(0.9);
+  transition: transform 0.3 ease;
+}
+
+.splide-custom .splide__slide.is-active{
+  transform: scale(1);
+}
+
+.splide-custom .slide__pagination__page.is-active{
+  background-color: #b88e2f;
+}

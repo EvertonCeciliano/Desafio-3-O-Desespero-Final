@@ -89,20 +89,25 @@ li:hover{
 .inputWrapper input{
   border: none;
   width: 200px; 
-  border-bottom: #000 1px solid;
+  box-shadow: none;
+  border-bottom: #000 1px solid!important;
 }
 
 .copyRight{
   margin-top: 35px;
 }
 
- button{
-  transition: 500ms;
+.subscribeButton{
   border: none;
   padding: 3px;
   font-weight: 500;
   background: none;
-  border-bottom: #000 1px solid;
+  border-bottom: #000 1px solid!important;
+}
+
+ button{
+  transition: 500ms;
+
  }
 
  button:hover{

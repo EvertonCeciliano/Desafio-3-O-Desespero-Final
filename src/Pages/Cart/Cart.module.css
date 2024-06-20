@@ -1,0 +1,250 @@
+.header{
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  height:316px;
+  text-align: center;
+  background-position: center center;
+  margin-bottom: 72px;
+  background-repeat: no-repeat;
+  background-image: url(https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/sectionsbg.png);
+}
+
+.header .logo{
+  width: 77px;
+
+  height: 77px;
+ margin: auto ;
+margin-bottom: 0;
+
+}
+
+.header h2{
+  margin: auto;
+  color : black;
+  font-size: 48px;
+  font-weight: 600;
+
+}
+
+.header p:nth-child(1){
+  font-weight: 500;
+}
+
+.header p:nth-child(2){
+  font-weight: 200;
+}
+.path{
+  margin: auto;
+  color : black;
+  display: flex;
+  flex-direction: column;
+  gap :2px
+
+}
+
+.pathWrapper{
+  display: flex;
+  gap: 6px;
+}
+tbody{
+  
+}
+.productSectionHeader{
+  width:817px ;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  margin-bottom: 55px;
+  padding-inline: 146px;
+  font-size: 16px;
+  background-color: #F9F1E7;
+   align-items: center;
+   font-weight: 500;
+}
+
+.productAndPrice{
+  display: flex;
+
+  align-items: center;
+  gap: 144px;
+}
+
+.quantityAndSubtotal{
+  display: flex;
+
+  align-items: center;
+  gap: 36px;
+}
+
+.product{
+
+  display: flex;
+
+}
+
+.orderDetails{
+  margin:  auto;
+  display: flex;
+}
+
+
+.item img{
+  width: 105px;
+  height: 105px;
+  border-radius: 10px;
+}
+
+.item{
+  display: flex;
+  width:817px ;
+  align-items: center;
+  gap: 44px;
+}
+
+
+.quantityWrapper {
+  display: flex;
+justify-content: space-between;
+  border-radius: 10px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding: 20px 12px;
+  width: 123px;
+  border: 1px solid #9F9F9F;
+}
+
+.quantityWrapper button {
+  border: none;
+  width: 30px; 
+  height: 30px; 
+  background-color: #F9F1E7; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tableLabel{
+display: flex;
+
+
+}
+
+.quantityWrapper button:hover {
+  background-color: #f0f0f0;
+}
+
+.quantityWrapper p {
+  font-weight: 500;
+  font-size: 18px; 
+}
+
+
+.productAndPrice{
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantityButton{
+cursor: pointer;
+}
+
+
+.item .trashcan{
+ width: 21px;
+ height: 21px;
+}
+
+
+.subtotal , .price, .name{
+  color: #9F9F9F;
+}
+
+.product{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.cartTotals{
+  width: 390px;
+  padding: 15px;
+  align-items: center;
+
+  background-color: #F9F1E7;
+  display: flex;
+  flex-direction: column;
+
+  height: 390px;
+}
+.cartContent{
+  display: flex;
+  gap: 30px;
+  
+  margin:  auto;
+}
+
+.cart{
+  display:flex; ;
+  width: 100%;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.cartTotals .valueWrapper p{
+  display: flex;
+  width: 243px;
+  align-items: center;
+ 
+
+}
+
+.cartTotals p{
+  font-weight: 500;
+  font-size: 16px;
+
+}
+
+.trashcan{
+  cursor: pointer;
+}
+
+
+.item :nth-child(1){
+cursor: pointer;
+}
+.valueWrapperSubtotal span{
+ font-weight: 400;
+ font-size:16px ; 
+ color: #9F9F9F;
+
+}
+
+.cartTotals h3{
+  font-size: 32px;
+  margin-bottom:60px ;
+}
+
+.valueWrapper{
+  gap: 31px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom:42px;
+}
+
+.valueWrapperTotal span{
+  font-size: 20px;
+  font-weight: 500;
+  color: #B88E2F;
+
+}
+
+.cartTotals button{
+  border: 1px solid black !important;
+  font-size: 20px;
+  height: 59px;
+  width: 222px;
+  border-radius: 15px;
+}
+

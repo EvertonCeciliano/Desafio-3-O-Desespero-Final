@@ -1,4 +1,4 @@
-/* src/components/Product.module.css */
+
 
 .productCard {
   height: 446px;
@@ -99,11 +99,16 @@
   font-size: 16px; 
 }
 
+.saleTag p{
+  color: white;
+}
+
 .saleTag {
   background-color: #E97171; 
   align-items: center;
   align-content: center;
   padding-left:1px ;
+
   display: flex;
 }
 

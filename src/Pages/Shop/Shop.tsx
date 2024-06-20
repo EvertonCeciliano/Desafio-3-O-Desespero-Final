@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Shop.module.css';
 import { Product, ProductData } from '../../Components/ProductCard/Product';
+import { Commitment } from '../../Components/Commitment/Commitment';
 
 const initialProducts: ProductData[] = [];
 
@@ -16,7 +17,7 @@ export const Shop: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://run.mocky.io/v3/7783f0b3-ebcf-4e2d-b63b-61e95a7e59b4"
+          "https://run.mocky.io/v3/affb51b5-4539-4912-80a4-f868e98bf7ca"
         );
         setProducts(response.data.products);
       } catch (error) {
@@ -205,38 +206,9 @@ export const Shop: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.section3}>
-        <div className={styles.commitment}>
-          <div className={styles.commitmentWrapper}>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/trofeu.svg" alt="High Quality" />
-            <div className={styles.textWrapper}>
-              <h4>High Quality</h4>
-              <p>Crafted from top materials</p>
-            </div>
-          </div>
-          <div className={styles.commitmentWrapper}>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/warranty.svg" alt="Warranty Protection" />
-            <div className={styles.textWrapper}>
-              <h4>Warranty Protection</h4>
-              <p>Over 2 years</p>
-            </div>
-          </div>
-          <div className={styles.commitmentWrapper}>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/shipping.svg" alt="Free Shipping" />
-            <div className={styles.textWrapper}>
-              <h4>Free Shipping</h4>
-              <p>Order over $150</p>
-            </div>
-          </div>
-          <div className={styles.commitmentWrapper}>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/suport.svg" alt="24/7 Support" />
-            <div className={styles.textWrapper}>
-              <h4>24/7 Support</h4>
-              <p>Dedicated support</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    
+       <Commitment/>
+
     </>
   );
 };

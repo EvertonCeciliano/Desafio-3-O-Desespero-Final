@@ -1,26 +1,13 @@
 
-import { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { auth } from "../firebaseconfig";
+import { Outlet } from "react-router-dom";
+
 
 import { Header } from "../Components/Header/Header";
 import { Footer } from "../Components/Footer/Footer";
 
 export function DefaultLayout() {
-  const [user, setUser] = useState<null | string>(null);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user.email);
-      } else {
-        setUser(null);
-      }
-    });
 
-    return () => unsubscribe();
-  }, []);
 
   return (
     <div>

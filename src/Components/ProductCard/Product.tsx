@@ -1,45 +1,58 @@
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../CartStore/CartSlice';
 import styles from './Product.module.css';
 import NewTag from '../Tags/NewTag';
 import SaleTag from '../Tags/SaleTag';
 
-interface ProductData {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
+export interface ProductData {
+  id: number
+  name: string
+  SKU: string
+  description: string
+  price: number
   priceDiscount: number | null;
-  image: string;
-  onSale: boolean;
-  discountPercentage: number;
-  isNew: boolean;
-  category: string;
+  image: string
+  onSale: boolean
+  discountPercentage: number
+  isNew: boolean
+  category: string
+  tags: string[]
+  colors: string[]
+  quantity: number
+  sizes: string[]
 }
 
-interface ProductProps {
+export interface ProductProps {
   product: ProductData;
 }
 
 export const Product: React.FC<ProductProps> = ({ product }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const renderTag = () => {
     if (product.onSale) {
       return <SaleTag onSale discountPercentage={product.discountPercentage} />;
     } else if (product.isNew) {
-      return <NewTag isNew={product.isNew} />;
+      return <NewTag isNew={product.isNew} />
     }
-    return null;
-  };
+    return null
+  }
 
-  const handleClick = () => {
-    navigate(`/product/${product.id}`);
-    window.scrollTo(0, 0);
-  };
+  const handleShopNavigate = () => {
+    navigate(`/product/${product.id}`)
+    window.scrollTo(0, 0)
+  }
+
+  const handleAddToCart = (event: React.MouseEvent) => {
+    event.stopPropagation()
+    dispatch(addItem(product))
+  }
 
   return (
-    <div className={styles.productCard} onClick={handleClick}>
+    <div className={styles.productCard} onClick={handleShopNavigate}>
       {renderTag()}
       <img src={product.image} alt={product.name} />
       <div className={styles.infos}>
@@ -57,7 +70,9 @@ export const Product: React.FC<ProductProps> = ({ product }) => {
         </div>
       </div>
       <div className={styles.overlay}>
-        <button className={styles.addToCartButton}>Add to Cart</button>
+        <button className={styles.addToCartButton} onClick={handleAddToCart}>
+          Add to Cart
+        </button>
         <ul>
           <li>
             <img

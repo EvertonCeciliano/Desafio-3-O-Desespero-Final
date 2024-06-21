@@ -11,8 +11,6 @@ FURINO é uma aplicação de e-commerce desenvolvida em React TypeScript, utiliz
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Dependências](#dependências)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Instalação
 

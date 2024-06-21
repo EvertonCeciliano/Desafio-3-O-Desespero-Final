@@ -1,67 +1,72 @@
-import styles from './Checkout.module.css';
-import React, { useState } from "react";
-
-import axios from 'axios';
-
-import { Path } from "../../Components/Path/Path";
+import React, { useState, useMemo } from 'react'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { RootState } from '../../CartStore/store'
+import styles from './Checkout.module.css'
+import { Path } from "../../Components/Path/Path"
+import { Commitment } from '../../Components/Commitment/Commitment'
+import { toast } from 'react-toastify'
 
 export const Checkout: React.FC = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.items)
 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     companyName: '',
     zipCode: '',
-    country: 'Brazil', // Default to Brazil for Brazilian ZIP code
+    country: 'Brazil',
     streetAddress: '',
     city: '',
     province: '',
     addonAddress: '',
     email: '',
     additionalInfo: ''
-  });
-
-
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData(prevState => ({
       ...prevState,
       [name]: value
-    }));
+    }))
 
     if (name === 'zipCode' && value.length === 8) {
-      fetchAddress(value);
+      fetchAddress(value)
     }
-  };
+  }
 
   const fetchAddress = async (zipCode: string) => {
     try {
-      const response = await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`);
-      const { logradouro, localidade, uf, bairro } = response.data;
+      const response = await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`)
+      const { logradouro, localidade, uf, bairro } = response.data
       setFormData(prevState => ({
         ...prevState,
         streetAddress: logradouro,
         city: localidade,
         province: uf,
         addonAddress: bairro
-      }));
+      }))
     } catch (error) {
-      console.error('Error fetching address', error);
+      console.error('Error fetching address', error)
     }
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await axios.post('https://your-api-endpoint.com/checkout', formData);
-      console.log(response.data);
-
+      const response = await axios.post('https://your-api-endpoint.com/checkout', formData)
+      console.log(response.data)
     } catch (error) {
-      console.error('Error submitting form', error);
- 
+      console.error('Error submitting form', error)
     }
-  };
+  }
+
+  const subtotal = useMemo(() => {
+    return cartItems.reduce((acc, item) => {
+      return acc + item.quantity * item.price
+    }, 0)
+  }, [cartItems])
 
   return (
     <div className={styles.checkoutPage}>
@@ -77,7 +82,7 @@ export const Checkout: React.FC = () => {
         <div className={styles.billingDetails}>
           <h2>Billing Details</h2>
           <form onSubmit={handleSubmit} className={styles.inputs}>
-            <div className={styles.smallInputs}>  
+            <div className={styles.smallInputs}>
               <div className={styles.inputWrapper}>
                 <label>First Name</label>
                 <input
@@ -178,11 +183,53 @@ export const Checkout: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            
+
           </form>
         </div>
-        <div className={styles.placeOrder}></div>
+        <div>
+          <div className={styles.order}>
+            <ul className={styles.product}>
+              <li className={styles.ColumTitle}>Product</li>
+              {cartItems.map(item => (
+                <li className={styles.item} key={item.id}>
+                  <p>{item.name}</p> <span>x</span> <span>{item.quantity}</span>
+                </li>
+              ))}
+              <li>Subtotal</li>
+              <li>Total</li>
+            </ul>
+            <ul className={styles.subTotal}>
+              <li className={styles.ColumTitle}>Product</li>
+              {cartItems.map(item => (
+                <li key={item.id}>
+                  Rs. {(item.quantity * item.price).toFixed(2)}
+                </li>
+              ))}
+              <li>Rs. {subtotal.toFixed(2)}</li>
+              <li>Rs. {subtotal.toFixed(2)}</li>
+            </ul>
+          </div>
+          <div className={styles.placeOrder}>
+            <p><div className={styles.ball}></div>Direct Bank Transfer</p>
+            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
+            <div className={styles.checkWrapper}>
+              <div className={styles.check}>
+                <input type="checkbox" />
+                <label>Direct Bank Transfer</label>
+              </div>
+              <div className={styles.check}>
+                <input type="checkbox" />
+                <label>Direct Bank Transfer</label>
+              </div>
+            </div>
+            <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <b>privacy policy.</b></p>
+            <button onClick={()=>{
+                    toast.success('Order successfull!');
+            }} >Place Order</button>
+          </div>
+        </div>
       </div>
+      <Commitment />
     </div>
-  );
-};
+  )
+}

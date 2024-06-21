@@ -5,6 +5,7 @@ import { addItem } from '../../CartStore/CartSlice';
 import styles from './Product.module.css';
 import NewTag from '../Tags/NewTag';
 import SaleTag from '../Tags/SaleTag';
+import { toast } from 'react-toastify';
 
 export interface ProductData {
   id: number
@@ -25,7 +26,7 @@ export interface ProductData {
 }
 
 export interface ProductProps {
-  product: ProductData;
+  product: ProductData
 }
 
 export const Product: React.FC<ProductProps> = ({ product }) => {
@@ -48,6 +49,7 @@ export const Product: React.FC<ProductProps> = ({ product }) => {
 
   const handleAddToCart = (event: React.MouseEvent) => {
     event.stopPropagation()
+    toast.success('Item added to cart successfully!');
     dispatch(addItem(product))
   }
 

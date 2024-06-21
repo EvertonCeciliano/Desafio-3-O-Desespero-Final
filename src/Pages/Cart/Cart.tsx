@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../CartStore/store';
 import styles from './Cart.module.css';
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate
+import { useNavigate } from 'react-router-dom'; 
 
 import { decreaseQuantity, increaseQuantity, removeItem } from '../../CartStore/CartSlice';
 import { Commitment } from '../../Components/Commitment/Commitment';
@@ -11,35 +11,38 @@ import { Path } from '../../Components/Path/Path';
 
 
 export const Cart: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const navigate = useNavigate(); // Uso de useNavigate para navegação
+  const navigate = useNavigate() 
 
   const handleRemoveItem = useCallback((productId: number) => {
-    dispatch(removeItem(productId));
-  }, [dispatch]);
+    dispatch(removeItem(productId))
+  }, [dispatch])
 
   const handleIncreaseQuantity = useCallback((productId: number) => {
-    dispatch(increaseQuantity(productId));
-  }, [dispatch]);
+    dispatch(increaseQuantity(productId))
+  }, [dispatch])
 
   const handleDecreaseQuantity = useCallback((productId: number) => {
-    dispatch(decreaseQuantity(productId));
-  }, [dispatch]);
+    dispatch(decreaseQuantity(productId))
+  }, [dispatch])
 
   const subtotal = useMemo(() => {
     return cartItems.reduce((acc, item) => {
-      return acc + item.quantity * item.price;
+      return acc + item.quantity * item.price
     }, 0);
-  }, [cartItems]);
+  }, [cartItems])
 
   const handleShopNavigate = (item: any) => {
-    navigate(`/product/${item.id}`); // Navegar para a página do produto
-  };
+    navigate(`/product/${item.id}`)
+  }
 
-  const handleCheckoutNavigate = () => {
-    navigate('/cart'); // Navegar para o carrinho (mesma página)
-  };
+
+  function handleCheckoutNavigate  () {
+
+    navigate('/checkout')
+  }
+
 
   return (
     <div className={styles.cart}>
@@ -126,4 +129,3 @@ export const Cart: React.FC = () => {
   );
 };
 
-export default Cart;

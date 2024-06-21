@@ -3,7 +3,7 @@ import styles from '../ProductCard/Product.module.css';
 
 interface SaleTagProps {
   onSale: boolean;
-  discountPercentage: number;
+  discountPercentage: number
 }
 
 const SaleTag: React.FC<SaleTagProps> = ({ onSale, discountPercentage }) => {

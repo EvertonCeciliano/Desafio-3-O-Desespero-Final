@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../CartStore/store';
@@ -6,44 +6,44 @@ import styles from './CartModal.module.css';
 import { removeItem } from '../../CartStore/CartSlice';
 
 interface CartModalProps {
-  onClose: () => void;
+  onClose: () => void
 }
 
 export const CartModal: React.FC<CartModalProps> = ({ onClose }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cart.items)
 
   const handleRemoveItem = useCallback((productId: number) => {
-    dispatch(removeItem(productId));
-  }, [dispatch]);
+    dispatch(removeItem(productId))
+  }, [dispatch])
 
 
 
   const subtotal = useMemo(() => {
     return cartItems.reduce((acc, item) => {
-      return acc + item.quantity * item.price;
-    }, 0);
-  }, [cartItems]);
+      return acc + item.quantity * item.price
+    }, 0)
+  }, [cartItems])
 
   const handleContinueShopping = () => {
-    onClose();
+    onClose()
 
-    navigate('/shop');
-  };
+    navigate('/shop')
+  }
 
   function handleCheckoutNavigate  () {
-    onClose();
+    onClose()
 
-    navigate('/cart');
-  };
+    navigate('/cart')
+  }
 
   function handleComparisonNavigate () {
-    onClose();
+    onClose()
 
-    navigate('/comparison');
-  };
+    navigate('/comparison')
+  }
 
   return (
     <div className={styles.modaloverlay}>

@@ -86,8 +86,8 @@ export const Shop: React.FC = () => {
   const renderPageNumbers = () => {
     const maxPagesToShow = 4; 
     const pages = [];
-    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+    const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
 
    
     if (startPage > 1) {
@@ -213,4 +213,4 @@ export const Shop: React.FC = () => {
   );
 };
 
-export default Shop;
+

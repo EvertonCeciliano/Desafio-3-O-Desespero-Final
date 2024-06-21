@@ -133,6 +133,7 @@ h4{
 
 .buttonWrapper button{
 border: 1px solid;
+background: none repeat;
 border-radius: 50px;
 font-size: 12px;
 padding: 6px;

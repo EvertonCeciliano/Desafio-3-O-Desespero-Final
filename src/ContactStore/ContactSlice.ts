@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Contact {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+  name: string
+  email: string
+  subject: string
+  message: string
 }
 
 interface ContactsState {
-  contacts: Contact[];
+  contacts: Contact[]
 }
 
 const initialState: ContactsState = {
@@ -20,10 +20,10 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     saveContact(state, action: PayloadAction<Contact>) {
-      state.contacts.push(action.payload);
+      state.contacts.push(action.payload)
     }
   }
 });
 
 export const { saveContact } = contactsSlice.actions;
-export default contactsSlice.reducer;
+export default contactsSlice.reducer

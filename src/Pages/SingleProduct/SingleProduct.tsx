@@ -25,7 +25,7 @@ export const SingleProduct: React.FC<SingleProductProps> = () => {
   const [quantity, setQuantity] = useState<number>(1);
   const [product, setProduct] = useState<ProductData | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<ProductData[]>([]);
-  const colors = ['#ff0000', '#00ff00', '#0000ff'];
+  const colors = ['#5f4f4f', '#004872', '#0000ff'];
   const [visibleCount, setVisibleCount] = useState<number>(4);
 
   const handleSizeClick = (size: string) => {
@@ -110,7 +110,7 @@ export const SingleProduct: React.FC<SingleProductProps> = () => {
   };
 
   return (
-    <div className={styles.singleProductContainer}>
+    <div >
       {product && (
         <>
           <div className={styles.path}>

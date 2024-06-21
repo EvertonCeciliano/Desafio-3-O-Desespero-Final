@@ -255,6 +255,7 @@
 
 .quantitySection button {
   border: 1px solid black;
+  background: none;
   width: 215px;
   border-radius: 15px;
   height: 64px;

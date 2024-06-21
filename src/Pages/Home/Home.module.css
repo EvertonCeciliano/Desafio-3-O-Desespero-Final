@@ -4,7 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0;
-  background-image: url('https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/scandinavian-interior-mockup-wall-decal-background.jpg');
+  background-image: url("https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/scandinavian-interior-mockup-wall-decal-background.jpg");
 }
 
 .cardSection1 {
@@ -14,7 +14,7 @@
   top: 153px;
   width: 643px;
   height: 443px;
-  background-color: #FFF3E3;
+  background-color: #fff3e3;
   left: 1200px;
 }
 
@@ -27,7 +27,7 @@
 
 .cardSection1 h1 {
   width: 400px;
-  color: #B88E2F;
+  color: #b88e2f;
   font-size: 52px;
   margin-bottom: 10px;
 }
@@ -41,7 +41,7 @@
 .cardSection1 button {
   width: 222px;
   height: 74px;
-  background-color: #B88E2F;
+  background-color: #b88e2f;
   border: none;
   color: white;
 }
@@ -71,7 +71,7 @@
 }
 
 .categoryCard p {
-  margin-top: 30px; 
+  margin-top: 30px;
   text-align: center;
   font-size: 24px;
   font-weight: 600;
@@ -91,17 +91,15 @@
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px; 
-
+  gap: 32px;
 }
 
-.section5{
+.section5 {
   display: flex;
   margin: 0 auto;
   align-items: center;
-  justify-content: center;}
-
-
+  justify-content: center;
+}
 
 @media (max-width: 1200px) {
   .cardSection1 {
@@ -114,5 +112,44 @@
   .productsWrapper {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.section4 {
+  height: auto;
+  justify-content: space-between;
+  display: flex;
+  padding-left: 100px;
+  background-color: #FCF8F3;
+  margin-block: 69px ;
+}
+
+.text {
+  width: 422px;
+  align-items: center;
+  margin:  auto 0;
+}
+.carrousel {
+  width: 30%;
+}
+
+.text h2{
+  font-size: 40px;
+  font-weight: bold;
+  
+}
+
+.text p{
+  margin-bottom: 25px;
+  margin-top:7px;
+  font-weight: 500;
+}
+
+.text button {
+  width: 176px;
+  height: 48px;
+  background-color: #b88e2f;
+  border: none;
+  color:#fff;
+  
 }
 

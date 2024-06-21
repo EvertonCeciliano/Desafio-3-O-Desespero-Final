@@ -8,6 +8,10 @@ header{
   padding-left:55px ;
 }
 
+header :nth-child(1){
+  cursor: pointer;
+}
+
 .navbar{
   display: flex;
   font-weight: 500;

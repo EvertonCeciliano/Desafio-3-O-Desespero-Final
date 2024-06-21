@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
-import styles from './Path.module.css'; 
-
+import { ReactNode } from 'react'
+import styles from './Path.module.css'
 interface PathProps {
   children: ReactNode;
   title: ReactNode; 

@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import cartReducer from './CartSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import cartReducer from './CartSlice'
 
 const persistConfig = {
   key: 'root',
@@ -12,12 +12,12 @@ const persistedReducer = persistReducer(persistConfig, cartReducer);
 
 const store = configureStore({
   reducer: {
-    cart: persistedReducer,
-  },
+    cart: persistedReducer
+  }
 });
 
-const persistor = persistStore(store);
+const persistor = persistStore(store)
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
 
-export { store, persistor };
+export { store, persistor }

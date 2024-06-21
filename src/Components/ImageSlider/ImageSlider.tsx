@@ -26,30 +26,24 @@ export const Carousel = () => {
         <img
           src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/slide1.png"
           alt="Inspiração 1"
-          className="carousel-image"
+       
         />
       </SplideSlide>
       <SplideSlide>
         <img
-          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/slide1.png"
+          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/slide2.png"
           alt="Inspiração 2"
-          className="carousel-image"
+      
         />
       </SplideSlide>
       <SplideSlide>
         <img
-          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/slide1.png"
-          alt="Inspiração 2"
-          className="carousel-image"
+          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/slide3.png"
+          alt="Inspiração 3"
+        
         />
       </SplideSlide>
-      <SplideSlide>
-        <img
-          src="https://pb-desafio3.s3.us-east-2.amazonaws.com/inspiration2.png"
-          alt="Inspiração 2"
-          className="carousel-image"
-        />
-      </SplideSlide>
+
     </Splide>
   );
 };

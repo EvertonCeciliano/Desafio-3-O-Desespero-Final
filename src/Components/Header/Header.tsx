@@ -1,35 +1,61 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Header.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { HeaderContainer, NavBar, MenuList, CartContainer, CartActions, IconContainer } from './styles';
 import { CartModal } from '../CartModal/CartModal';
+import { WishlistModal } from '../WishlistModal/WishlistModal';
+import { ShoppingCart, User, Heart } from '@phosphor-icons/react';
+import { RootState } from '../../CartStore/store';
+import { setCartOpen } from '../../CartStore/CartSlice';
+import { setWishlistOpen } from '../../WishlistStore/WishlistSlice';
 
 export function Header() {
   const navigate = useNavigate();
-  const [isCartModalOpen, setCartModalOpen] = useState(false);
-  const handleCloseModal = () => {
-    setCartModalOpen(false)
-  };
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
   const handleOpenCartModal = () => {
-    setCartModalOpen(true)
+    dispatch(setCartOpen(true));
+  };
+
+  const handleOpenWishlistModal = () => {
+    dispatch(setWishlistOpen(true));
   };
 
   return (
-    <header>
-      <img className={styles.logo} onClick={() => navigate('/')} src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/logo.svg" alt="" />
-      <ul className={styles.navbar}>
+    <HeaderContainer>
+      <img onClick={() => navigate('/')} src="../../../public/images/logo.png" alt="Logo" />
+      <NavBar>
         <li onClick={() => navigate('/')}>Home</li>
         <li onClick={() => navigate('/shop')}>Shop</li>
         <li onClick={() => navigate('/about')}>About</li>
         <li onClick={() => navigate('/contact')}>Contact</li>
-      </ul>
-      <div className={styles.cart} > 
-        <ul className={styles.menu}>
-          <li><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/cart.svg" onClick={handleOpenCartModal} alt="" /></li>
-          <li><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/usericon.svg" alt='user'  onClick={() => navigate('/login')} /></li>
-        </ul>
-      </div>
-      {isCartModalOpen && <CartModal onClose={handleCloseModal} />} 
-    </header>
+      </NavBar>
+      <CartContainer>
+        <CartActions>
+          <IconContainer>
+            <User size={28} onClick={() => navigate('/login')} />
+            <div className="wishlist-icon">
+              <Heart 
+                size={28} 
+                onClick={handleOpenWishlistModal}
+                weight={wishlistItems.length > 0 ? "fill" : "regular"}
+              />
+              {wishlistItems.length > 0 && (
+                <span className="wishlist-count">{wishlistItems.length}</span>
+              )}
+            </div>
+            <div className="cart-icon">
+              <ShoppingCart size={28} onClick={handleOpenCartModal} />
+              {cartItems.length > 0 && (
+                <span className="cart-count">{cartItems.length}</span>
+              )}
+            </div>
+          </IconContainer>
+        </CartActions>
+      </CartContainer>
+      <CartModal />
+      <WishlistModal />
+    </HeaderContainer>
   );
 }

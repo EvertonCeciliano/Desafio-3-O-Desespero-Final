@@ -1,131 +1,159 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../CartStore/store';
-import styles from './Cart.module.css';
-import { useNavigate } from 'react-router-dom'; 
+import { CartItem, updateQuantity, removeFromCart } from '../../CartStore/CartSlice';
 
-import { decreaseQuantity, increaseQuantity, removeItem } from '../../CartStore/CartSlice';
-import { Commitment } from '../../Components/Commitment/Commitment';
-import { Path } from '../../Components/Path/Path';
+import { toast } from 'react-toastify';
+import { Trash, Plus, Minus, ShoppingCart, CaretRight } from '@phosphor-icons/react';
+import { 
+  Container,
+  CartContainer,
+  ProductList,
+  ProductCard,
+  ProductImage,
+  ProductInfo,
+  ProductName,
+  ProductPrice,
+  QuantityControl,
+  QuantityButton,
+  Quantity,
+  RemoveButton,
+  CartSummary,
+  SummaryTitle,
+  SummaryRow,
+  CheckoutButton,
+  EmptyCart,
+  EmptyCartTitle,
+  EmptyCartText,
+  ShopButton,
+  PathContainer
+} from './styles';
 
-
+const CartProduct: React.FC<{
+  item: CartItem;
+  onQuantityChange: (id: number, quantity: number) => void;
+  onRemove: (id: number) => void;
+  onImageClick: (item: CartItem) => void;
+}> = React.memo(({ item, onQuantityChange, onRemove, onImageClick }) => (
+  <ProductCard>
+    <ProductImage
+      src={item.image}
+      alt={item.name}
+      onClick={() => onImageClick(item)}
+    />
+    <ProductInfo>
+      <ProductName>{item.name}</ProductName>
+      <ProductPrice>${item.price.toFixed(2)}</ProductPrice>
+    </ProductInfo>
+    <QuantityControl>
+      <QuantityButton
+        onClick={() => onQuantityChange(item.id, item.quantity - 1)}
+        disabled={item.quantity <= 1}
+      >
+        <Minus size={16} weight="bold" />
+      </QuantityButton>
+      <Quantity>{item.quantity}</Quantity>
+      <QuantityButton
+        onClick={() => onQuantityChange(item.id, item.quantity + 1)}
+      >
+        <Plus size={16} weight="bold" />
+      </QuantityButton>
+    </QuantityControl>
+    <ProductPrice>${(item.quantity * item.price).toFixed(2)}</ProductPrice>
+    <RemoveButton onClick={() => onRemove(item.id)} title="Remove item">
+      <Trash size={20} />
+    </RemoveButton>
+  </ProductCard>
+));
 
 export const Cart: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const navigate = useNavigate() 
 
   const handleRemoveItem = useCallback((productId: number) => {
-    dispatch(removeItem(productId))
-  }, [dispatch])
+    dispatch(removeFromCart(productId));
+    toast.success('Item removed from cart');
+  }, [dispatch]);
 
-  const handleIncreaseQuantity = useCallback((productId: number) => {
-    dispatch(increaseQuantity(productId))
-  }, [dispatch])
+  const handleUpdateQuantity = useCallback((productId: number, quantity: number) => {
+    if (quantity < 1) return;
+    dispatch(updateQuantity({ productId, quantity }));
+  }, [dispatch]);
 
-  const handleDecreaseQuantity = useCallback((productId: number) => {
-    dispatch(decreaseQuantity(productId))
-  }, [dispatch])
+  const handleProductClick = useCallback((item: CartItem) => {
+    navigate(`/product/${item.id}`);
+  }, [navigate]);
 
-  const subtotal = useMemo(() => {
-    return cartItems.reduce((acc, item) => {
-      return acc + item.quantity * item.price
-    }, 0);
-  }, [cartItems])
+  const handleCheckout = useCallback(() => {
+    if (cartItems.length === 0) {
+      toast.error('Your cart is empty');
+      return;
+    }
+    navigate('/checkout');
+  }, [navigate, cartItems.length]);
 
-  const handleShopNavigate = (item: any) => {
-    navigate(`/product/${item.id}`)
+  const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
+
+  if (cartItems.length === 0) {
+    return (
+      <Container>
+        <PathContainer>
+          <p>Home</p>
+          <CaretRight size={16} />
+          <p>Cart</p>
+        </PathContainer>
+        <EmptyCart>
+          <ShoppingCart size={64} weight="thin" />
+          <EmptyCartTitle>Your cart is empty</EmptyCartTitle>
+          <EmptyCartText>
+            Explore our products and discover amazing deals!
+          </EmptyCartText>
+          <ShopButton onClick={() => navigate('/')}>
+            Start Shopping
+          </ShopButton>
+        </EmptyCart>
+      </Container>
+    );
   }
-
-
-  function handleCheckoutNavigate  () {
-
-    navigate('/checkout')
-  }
-
 
   return (
-    <div className={styles.cart}>
-      <Path title='Cart'>
+    <Container>
+      <PathContainer>
         <p>Home</p>
-        <img
-          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/dashicons_arrow-down-alt2.svg"
-          alt="Arrow"
-        />
+        <CaretRight size={16} />
         <p>Cart</p>
-      </Path>
+      </PathContainer>
 
-      <div className={styles.cartContent}>
-        <table>
-          <thead>
-            <tr className={styles.productSectionHeader}>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartItems.map((item) => (
-              <tr className={styles.item} key={item.id}>
-                <td>
-                  <img
-                    src={item.image}
-                    onClick={() => handleShopNavigate(item)}
-                    alt="Product"
-                  />
-                </td>
-                <td>
-                  <p className={styles.name}>{item.name}</p>
-                </td>
-                <td className={styles.price}>Rs. {item.price}</td>
-                <td>
-                  <div className={styles.quantityWrapper}>
-                    <div
-                      className={styles.quantityButton}
-                      onClick={() => handleDecreaseQuantity(item.id)}
-                    >
-                      -
-                    </div>
-                    <p>{item.quantity}</p>
-                    <div
-                      className={styles.quantityButton}
-                      onClick={() => handleIncreaseQuantity(item.id)}
-                    >
-                      +
-                    </div>
-                  </div>
-                </td>
-                <td className={styles.subtotal}>
-                  Rs. {(item.quantity * item.price).toFixed(2)}
-                </td>
-                <td>
-                  <img
-                    src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/trashCan.svg"
-                    alt="Trashcan"
-                    className={styles.trashcan}
-                    onClick={() => handleRemoveItem(item.id)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className={styles.cartTotals}>
-          <h3>Cart Totals</h3>
-          <div className={styles.valueWrapper}>
-            <p className={styles.valueWrapperSubtotal}>
-              Subtotal <span>Rs. {subtotal.toFixed(2)}</span>
-            </p>
-            <p className={styles.valueWrapperTotal}>
-              Total <span>Rs. {subtotal.toFixed(2)}</span>
-            </p>
-          </div>
-          <button onClick={handleCheckoutNavigate}>Checkout</button>
-        </div>
-      </div>
-      <Commitment />
-    </div>
+      <CartContainer>
+        <ProductList>
+          {cartItems.map((item) => (
+            <CartProduct
+              key={item.id}
+              item={item}
+              onQuantityChange={handleUpdateQuantity}
+              onRemove={handleRemoveItem}
+              onImageClick={handleProductClick}
+            />
+          ))}
+        </ProductList>
+
+        <CartSummary>
+          <SummaryTitle>Order Summary</SummaryTitle>
+          <SummaryRow>
+            <span>Subtotal</span>
+            <span>${subtotal.toFixed(2)}</span>
+          </SummaryRow>
+          <SummaryRow>
+            <span>Total</span>
+            <span>${subtotal.toFixed(2)}</span>
+          </SummaryRow>
+          <CheckoutButton onClick={handleCheckout}>
+            Checkout
+          </CheckoutButton>
+        </CartSummary>
+      </CartContainer>
+    </Container>
   );
 };
-

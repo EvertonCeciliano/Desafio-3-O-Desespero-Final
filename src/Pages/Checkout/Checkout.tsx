@@ -1,235 +1,227 @@
-import React, { useState, useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
-import { RootState } from '../../CartStore/store'
-import styles from './Checkout.module.css'
-import { Path } from "../../Components/Path/Path"
-import { Commitment } from '../../Components/Commitment/Commitment'
-import { toast } from 'react-toastify'
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { CaretRight } from '@phosphor-icons/react';
+import { RootState } from '../../store'; 
+import * as S from './styles';
 
-export const Checkout: React.FC = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.items)
+type FormData = {
+  name: string;
+  email: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  cardNumber: string;
+  cardName: string;
+  cardExpiry: string;
+  cardCvv: string;
+};
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    companyName: '',
-    zipCode: '',
-    country: 'Brazil',
-    streetAddress: '',
-    city: '',
-    province: '',
-    addonAddress: '',
-    email: '',
-    additionalInfo: ''
-  })
+export function Checkout() {
+  const navigate = useNavigate();
+  const cart = useSelector((state: RootState) => state.cart);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
-    if (name === 'zipCode' && value.length === 8) {
-      fetchAddress(value)
-    }
-  }
+  const total = cart.items.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
 
-  const fetchAddress = async (zipCode: string) => {
+  const onSubmit = async (data: FormData) => {
+    setIsLoading(true);
     try {
-      const response = await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`)
-      const { logradouro, localidade, uf, bairro } = response.data
-      setFormData(prevState => ({
-        ...prevState,
-        streetAddress: logradouro,
-        city: localidade,
-        province: uf,
-        addonAddress: bairro
-      }))
+      // Simulate processing
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      toast.success('Order placed successfully!');
+      navigate('/');
     } catch (error) {
-      console.error('Error fetching address', error)
+      toast.error('Error processing order. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      const response = await axios.post('https://your-api-endpoint.com/checkout', formData)
-      console.log(response.data)
-    } catch (error) {
-      console.error('Error submitting form', error)
-    }
-  }
-
-  const subtotal = useMemo(() => {
-    return cartItems.reduce((acc, item) => {
-      return acc + item.quantity * item.price
-    }, 0)
-  }, [cartItems])
+  };
 
   return (
-    <div className={styles.checkoutPage}>
-      <Path title='Checkout'>
+    <S.Container>
+      <S.PathContainer>
         <p>Home</p>
-        <img
-          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/dashicons_arrow-down-alt2.svg"
-          alt="Arrow"
-        />
+        <CaretRight size={16} weight="bold" />
+        <p>Cart</p>
+        <CaretRight size={16} weight="bold" />
         <p>Checkout</p>
-      </Path>
-      <div className={styles.checkout}>
-        <div className={styles.billingDetails}>
-          <h2>Billing Details</h2>
-          <form onSubmit={handleSubmit} className={styles.inputs}>
-            <div className={styles.smallInputs}>
-              <div className={styles.inputWrapper}>
-                <label>First Name</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className={styles.inputWrapper}>
-                <label>Last Name</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Company Name (Optional)</label>
-              <input
-                type="text"
-                name="companyName"
-                value={formData.companyName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>ZIP code</label>
-              <input
-                type="text"
-                name="zipCode"
-                value={formData.zipCode}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Country / Region</label>
-              <input
-                type="text"
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Street address</label>
-              <input
-                type="text"
-                name="streetAddress"
-                value={formData.streetAddress}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Town / City</label>
-              <input
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Province</label>
-              <input
-                type="text"
-                name="province"
-                value={formData.province}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Add-on address</label>
-              <input
-                type="text"
-                name="addonAddress"
-                value={formData.addonAddress}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.inputWrapper}>
-              <label>Email address</label>
-              <input
-                type="text"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.adicionalInformation}>
-              <input
-                type="text"
-                name="additionalInfo"
-                placeholder='Additional Information'
-                value={formData.additionalInfo}
-                onChange={handleChange}
-              />
-            </div>
+      </S.PathContainer>
 
-          </form>
-        </div>
-        <div>
-          <div className={styles.order}>
-            <ul className={styles.product}>
-              <li className={styles.ColumTitle}>Product</li>
-              {cartItems.map(item => (
-                <li className={styles.item} key={item.id}>
-                  <p>{item.name}</p> <span>x</span> <span>{item.quantity}</span>
-                </li>
-              ))}
-              <li>Subtotal</li>
-              <li>Total</li>
-            </ul>
-            <ul className={styles.subTotal}>
-              <li className={styles.ColumTitle}>Product</li>
-              {cartItems.map(item => (
-                <li key={item.id}>
-                  Rs. {(item.quantity * item.price).toFixed(2)}
-                </li>
-              ))}
-              <li>Rs. {subtotal.toFixed(2)}</li>
-              <li>Rs. {subtotal.toFixed(2)}</li>
-            </ul>
-          </div>
-          <div className={styles.placeOrder}>
-            <p><div className={styles.ball}></div>Direct Bank Transfer</p>
-            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
-            <div className={styles.checkWrapper}>
-              <div className={styles.check}>
-                <input type="checkbox" />
-                <label>Direct Bank Transfer</label>
-              </div>
-              <div className={styles.check}>
-                <input type="checkbox" />
-                <label>Direct Bank Transfer</label>
-              </div>
-            </div>
-            <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <b>privacy policy.</b></p>
-            <button onClick={()=>{
-                    toast.success('Order successfull!');
-            }} >Place Order</button>
-          </div>
-        </div>
-      </div>
-      <Commitment />
-    </div>
-  )
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <S.CheckoutContainer>
+          <S.FormSection>
+            <S.FormCard>
+              <S.SectionTitle>Personal Information</S.SectionTitle>
+              <S.FormGroup>
+                <S.Label>Full Name</S.Label>
+                <S.Input
+                  {...register('name', { required: 'Name is required' })}
+                  className={errors.name ? 'error' : ''}
+                />
+                {errors.name && <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>Email</S.Label>
+                <S.Input
+                  type="email"
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Invalid email',
+                    },
+                  })}
+                  className={errors.email ? 'error' : ''}
+                />
+                {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+              </S.FormGroup>
+            </S.FormCard>
+
+            <S.FormCard>
+              <S.SectionTitle>Shipping Address</S.SectionTitle>
+              <S.FormGroup>
+                <S.Label>Address</S.Label>
+                <S.Input
+                  {...register('address', { required: 'Address is required' })}
+                  className={errors.address ? 'error' : ''}
+                />
+                {errors.address && <S.ErrorMessage>{errors.address.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>City</S.Label>
+                <S.Input
+                  {...register('city', { required: 'City is required' })}
+                  className={errors.city ? 'error' : ''}
+                />
+                {errors.city && <S.ErrorMessage>{errors.city.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>State</S.Label>
+                <S.Select {...register('state', { required: 'State is required' })}>
+                  <option value="">Select a state</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="MG">Minas Gerais</option>
+                </S.Select>
+                {errors.state && <S.ErrorMessage>{errors.state.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>ZIP Code</S.Label>
+                <S.Input
+                  {...register('zipCode', {
+                    required: 'ZIP Code is required',
+                    pattern: {
+                      value: /^\d{5}-?\d{3}$/,
+                      message: 'Invalid ZIP Code',
+                    },
+                  })}
+                  className={errors.zipCode ? 'error' : ''}
+                />
+                {errors.zipCode && <S.ErrorMessage>{errors.zipCode.message}</S.ErrorMessage>}
+              </S.FormGroup>
+            </S.FormCard>
+
+            <S.FormCard>
+              <S.SectionTitle>Payment Information</S.SectionTitle>
+              <S.FormGroup>
+                <S.Label>Card Number</S.Label>
+                <S.Input
+                  {...register('cardNumber', {
+                    required: 'Card number is required',
+                    pattern: {
+                      value: /^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/,
+                      message: 'Invalid card number',
+                    },
+                  })}
+                  className={errors.cardNumber ? 'error' : ''}
+                />
+                {errors.cardNumber && <S.ErrorMessage>{errors.cardNumber.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>Card Name</S.Label>
+                <S.Input
+                  {...register('cardName', { required: 'Card name is required' })}
+                  className={errors.cardName ? 'error' : ''}
+                />
+                {errors.cardName && <S.ErrorMessage>{errors.cardName.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>Expiry Date</S.Label>
+                <S.Input
+                  {...register('cardExpiry', {
+                    required: 'Expiry date is required',
+                    pattern: {
+                      value: /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
+                      message: 'Use the format MM/YY',
+                    },
+                  })}
+                  placeholder="MM/YY"
+                  className={errors.cardExpiry ? 'error' : ''}
+                />
+                {errors.cardExpiry && <S.ErrorMessage>{errors.cardExpiry.message}</S.ErrorMessage>}
+              </S.FormGroup>
+
+              <S.FormGroup>
+                <S.Label>CVV</S.Label>
+                <S.Input
+                  {...register('cardCvv', {
+                    required: 'CVV is required',
+                    pattern: {
+                      value: /^\d{3,4}$/,
+                      message: 'Invalid CVV',
+                    },
+                  })}
+                  className={errors.cardCvv ? 'error' : ''}
+                />
+                {errors.cardCvv && <S.ErrorMessage>{errors.cardCvv.message}</S.ErrorMessage>}
+              </S.FormGroup>
+            </S.FormCard>
+          </S.FormSection>
+
+          <S.OrderSummary>
+            <S.SummaryTitle>Order Summary</S.SummaryTitle>
+            <S.SummaryRow>
+              <span>Subtotal</span>
+              <span>R$ {total.toFixed(2)}</span>
+            </S.SummaryRow>
+            <S.SummaryRow>
+              <span>Shipping</span>
+              <span>Free</span>
+            </S.SummaryRow>
+            <S.SummaryRow>
+              <span>Total</span>
+              <span>R$ {total.toFixed(2)}</span>
+            </S.SummaryRow>
+            <S.PlaceOrderButton type="submit" disabled={isLoading}>
+              {isLoading ? 'Processing...' : 'Place Order'}
+            </S.PlaceOrderButton>
+          </S.OrderSummary>
+        </S.CheckoutContainer>
+      </form>
+
+      {isLoading && (
+        <S.LoadingOverlay>
+        </S.LoadingOverlay>
+      )}
+    </S.Container>
+  );
 }

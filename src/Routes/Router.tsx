@@ -7,7 +7,9 @@ import { Checkout } from '../Pages/Checkout/Checkout';
 import { Contact } from '../Pages/Contact/Contact';
 import { Login } from '../Pages/Login/Login';
 import { Shop } from '../Pages/Shop/Shop';
-import { SingleProduct } from '../Pages/SingleProduct/SingleProduct';
+import { ProductDetails } from '../Pages/ProductDetails/ProductDetails';
+import { Compare } from '../Pages/Compare/Compare';
+import { About } from '../Pages/About/About';
 import PrivateRoute from './PrivateRoutes'; 
 import { NotFound } from '../Components/NotFound/NotFound'; 
 
@@ -21,7 +23,9 @@ export const Router: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/product/:id" element={<SingleProduct />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/compare" element={<Compare />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

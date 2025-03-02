@@ -1,47 +1,117 @@
-import styles from './Footer.module.css'
+import React from 'react';
+import {
+  Container,
+  Content,
+  TopSection,
+  CompanyInfo,
+  SocialLinks,
+  LinksWrapper,
+  LinksColumn,
+  Newsletter,
+  InputGroup,
+  Copyright
+} from './styles';
+import { 
+  FacebookLogo, 
+  InstagramLogo, 
+  TwitterLogo, 
+  LinkedinLogo 
+} from '@phosphor-icons/react';
+
+const LINKS = {
+  main: [
+    { label: 'Home', href: '/' },
+    { label: 'Shop', href: '/shop' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' }
+  ],
+  help: [
+    { label: 'Payment Options', href: '/payment' },
+    { label: 'Returns', href: '/returns' },
+    { label: 'Privacy Policies', href: '/privacy' }
+  ],
+  social: [
+    { Icon: FacebookLogo, label: 'Facebook', href: 'https://facebook.com' },
+    { Icon: InstagramLogo, label: 'Instagram', href: 'https://instagram.com' },
+    { Icon: TwitterLogo, label: 'Twitter', href: 'https://twitter.com' },
+    { Icon: LinkedinLogo, label: 'LinkedIn', href: 'https://linkedin.com' }
+  ]
+};
 
 export function Footer() {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    console.log('Newsletter subscription');
+  };
+
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footerContainer}>
-        <div className={styles.companyInfo}>
-          <h2 className={styles.companyName}>Funiro.</h2>
-          <p className={styles.address}>
-            400 University Drive Suite 200 Coral Gables, FL 33134 USA
-          </p>
-          <ul className={styles.socialLinks}>
-            <li><a href="https://facebook.com"><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/facebook.svg" alt="Facebook" /></a></li>
-            <li><a href="https://instagram.com"><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/instagram.svg" alt="Instagram" /></a></li>
-            <li><a href="https://twitter.com"><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/twiter.svg" alt="Twitter" /></a></li>
-            <li><a href="https://linkedin.com"><img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/Linkedin.svg" alt="LinkedIn" /></a></li>
-          </ul>
-        </div>
-        <div className={styles.linksSection}>
-          <ul className={styles.linksList}>
-            <h4>Links</h4>
-            <li><a href="/">Home</a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div className={styles.helpSection}>
-          <ul className={styles.helpList}>
-            <h4>Help</h4>
-            <li><a href="/">Payment Options</a></li>
-            <li><a href="/">Returns</a></li>
-            <li><a href="/">Privacy Policies</a></li>
-          </ul>
-        </div>
-        <div className={styles.newsletterSection}>
-          <h4>Newsletter</h4>
-          <div className={styles.inputWrapper}>
-            <input type="email" className={styles.newsletterInput} placeholder="Enter Your Email Address" />
-            <button className={styles.subscribeButton}><p>SUBSCRIBE</p></button>
-          </div>
-        </div>
-      </div>
-      <p className={styles.copyRight}>2023 Funiro. All rights reserved.</p>
-    </footer>
-  )
+    <Container>
+      <Content>
+        <TopSection>
+          <CompanyInfo>
+            <h2>Funiro.</h2>
+            <p>400 University Drive Suite 200 Coral Gables, FL 33134 USA</p>
+            <SocialLinks>
+              {LINKS.social.map(({ Icon, label, href }) => (
+                <a 
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                >
+                  <Icon size={24} />
+                </a>
+              ))}
+            </SocialLinks>
+          </CompanyInfo>
+
+          <LinksWrapper>
+            <LinksColumn>
+              <h4>Links</h4>
+              <ul>
+                {LINKS.main.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </LinksColumn>
+
+            <LinksColumn>
+              <h4>Help</h4>
+              <ul>
+                {LINKS.help.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </LinksColumn>
+          </LinksWrapper>
+
+          <Newsletter>
+            <h4>Newsletter</h4>
+            <form onSubmit={handleSubscribe}>
+              <InputGroup>
+                <input 
+                  type="email" 
+                  placeholder="Enter Your Email Address" 
+                  aria-label="Email address for newsletter"
+                  required 
+                />
+                <button type="submit">SUBSCRIBE</button>
+              </InputGroup>
+            </form>
+          </Newsletter>
+        </TopSection>
+      </Content>
+      <Copyright>
+        <p> {currentYear} Funiro. All rights reserved.</p>
+      </Copyright>
+    </Container>
+  );
 }

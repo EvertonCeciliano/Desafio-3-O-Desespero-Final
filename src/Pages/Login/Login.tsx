@@ -1,68 +1,119 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseconfig'
-import { useNavigate } from 'react-router-dom'
-import styles from './Login.module.css'
+import { auth } from '../../firebaseconfig';
+import { useNavigate } from 'react-router-dom';
+import { CaretRight, GoogleLogo } from '@phosphor-icons/react';
+import * as S from './styles';
 
-export const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [error, setError] = useState<string>('')
-  const [isRegistering, setIsRegistering] = useState<boolean>(false)
-  const navigate = useNavigate()
+export function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
+    setError('');
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/checkout');
     } catch (error) {
-      setError('Invalid email or password');
+      setError('Email ou senha inválidos');
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider()
+    setIsLoading(true);
+    setError('');
+    const provider = new GoogleAuthProvider();
 
     try {
-      await signInWithPopup(auth, provider)
+      await signInWithPopup(auth, provider);
       navigate('/checkout');
     } catch (error) {
-      setError('Failed to login with Google')
+      setError('Erro ao fazer login com Google');
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
+    setError('');
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/checkout')
+      navigate('/checkout');
     } catch (error) {
-      setError('Failed to create an account')
+      setError('Erro ao criar conta');
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
-    <div className={styles.container}>
-      <h1>{isRegistering ? 'Register' : 'Login'}</h1>
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={isRegistering ? handleRegister : handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button type="submit">{isRegistering ? 'Register' : 'Login'}</button>
-      </form>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
-      <p onClick={() => setIsRegistering(!isRegistering)}>
-        {isRegistering ? 'Already have an account? Login' : "Don't have an account? Register"}
-      </p>
-    </div>
+    <S.Container>
+      <S.PathContainer>
+        <p>Home</p>
+        <CaretRight size={16} weight="bold" />
+        <p>{isRegistering ? 'Registro' : 'Login'}</p>
+      </S.PathContainer>
+
+      <S.LoginCard>
+        <S.Title>{isRegistering ? 'Criar Conta' : 'Login'}</S.Title>
+        
+        {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
+        
+        <form onSubmit={isRegistering ? handleRegister : handleLogin}>
+          <S.FormGroup>
+            <S.Label>Email</S.Label>
+            <S.Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+              required
+            />
+          </S.FormGroup>
+
+          <S.FormGroup>
+            <S.Label>Senha</S.Label>
+            <S.Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
+              required
+            />
+          </S.FormGroup>
+
+          <S.Button type="submit" disabled={isLoading}>
+            {isLoading ? 'Carregando...' : isRegistering ? 'Criar Conta' : 'Entrar'}
+          </S.Button>
+        </form>
+
+        <S.GoogleButton 
+          type="button" 
+          onClick={handleGoogleLogin}
+          disabled={isLoading}
+        >
+          <GoogleLogo size={24} weight="bold" />
+          Continuar com Google
+        </S.GoogleButton>
+
+        <S.ToggleText onClick={() => setIsRegistering(!isRegistering)}>
+          {isRegistering 
+            ? 'Já tem uma conta? Faça login' 
+            : 'Não tem uma conta? Registre-se'}
+        </S.ToggleText>
+      </S.LoginCard>
+    </S.Container>
   );
-};
+}

@@ -1,6 +1,6 @@
 // Counter.tsx
 import React from 'react';
-import styles from './Counter.module.css';
+import { CounterContainer, CounterButton, Quantity } from './styles';
 
 interface CounterProps {
   quantity: number;
@@ -10,10 +10,10 @@ interface CounterProps {
 
 export const Counter: React.FC<CounterProps> = ({ quantity, onDecrease, onIncrease }) => {
   return (
-    <div className={styles.counter}>
-      <button onClick={onDecrease} className={styles.counterButton}>-</button>
-      <span className={styles.quantity}>{quantity}</span>
-      <button onClick={onIncrease} className={styles.counterButton}>+</button>
-    </div>
+    <CounterContainer>
+      <CounterButton onClick={onDecrease}>-</CounterButton>
+      <Quantity>{quantity}</Quantity>
+      <CounterButton onClick={onIncrease}>+</CounterButton>
+    </CounterContainer>
   );
 };

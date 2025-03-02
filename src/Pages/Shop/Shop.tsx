@@ -1,216 +1,385 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import styles from './Shop.module.css';
 import { Product, ProductData } from '../../Components/ProductCard/Product';
 import { Commitment } from '../../Components/Commitment/Commitment';
+import {
+  Container,
+  Header,
+  Path,
+  PathWrapper,
+  Content,
+  Menu,
+  MenuContent,
+  FilterSection,
+  FilterGroup,
+  ViewOptions,
+  ResultCount,
+  SortSection,
+  ProductGrid,
+  Pagination,
+  PageNumbers,
+  PageButton,
+  FilterContainer,
+  FilterTitle,
+  PriceRange,
+  RangeInput,
+  RangeValues,
+  TagsContainer,
+  TagButton,
+  FilterButton,
+  MobileFilters,
+  CloseButton,
+  ApplyButton
+} from './styles';
+import { 
+  Funnel, 
+  SquaresFour, 
+  List, 
+  CaretRight,
+  ArrowLeft,
+  ArrowRight,
+  MagnifyingGlass,
+  X
+} from '@phosphor-icons/react';
+import styled from 'styled-components';
 
-const initialProducts: ProductData[] = [];
+const ITEMS_PER_PAGE = 12;
+const CATEGORIES = [
+  'All',
+  'Chairs',
+  'Sofa',
+  'Tables and Stools',
+  'Lamps',
+  'Mugs',
+  'Beds',
+  'Decor'
+];
+
+const SearchInputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  &:focus {
+    outline: none;
+    border-color: #666;
+  }
+`;
+
+const IconWrapper = styled.div`
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+`;
 
 export const Shop: React.FC = () => {
-  const [products, setProducts] = useState<ProductData[]>(initialProducts);
-  const [visibleCount, setVisibleCount] = useState<number>(16);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [sortBy, setSortBy] = useState<string>('default');
+  const [products, setProducts] = useState<ProductData[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [sortBy, setSortBy] = useState('default');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [showFilters, setShowFilters] = useState(false);
+  
+  // Novos estados para filtros
+  const [searchQuery, setSearchQuery] = useState('');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000000]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showNewOnly, setShowNewOnly] = useState(false);
+  const [showSaleOnly, setShowSaleOnly] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          "https://run.mocky.io/v3/affb51b5-4539-4912-80a4-f868e98bf7ca"
-        );
-        setProducts(response.data.products);
+        const response = await axios.get("http://localhost:3001/products");
+        setProducts(response.data);
+        // Definir o range de preço baseado nos produtos
+        const prices = response.data.map((p: ProductData) => p.price);
+        setPriceRange([Math.min(...prices), Math.max(...prices)]);
       } catch (error) {
-        console.error("Erro na requisição:", error);
+        console.error("Error fetching products:", error);
       }
     };
-
-    fetchData();
+    fetchProducts();
   }, []);
 
-  const handleSortChange = (option: string) => {
-    setSortBy(option);
+  // Extrair todas as tags únicas dos produtos
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    products.forEach(product => {
+      product.tags.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags);
+  }, [products]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
   };
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      // Filtro por categoria
+      if (selectedCategory && product.category !== selectedCategory) return false;
+      
+      // Filtro por busca
+      if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+      
+      // Filtro por preço
+      if (product.price < priceRange[0] || product.price > priceRange[1]) return false;
+      
+      // Filtro por tags
+      if (selectedTags.length > 0 && !selectedTags.some(tag => product.tags.includes(tag))) return false;
+      
+      // Filtro por New
+      if (showNewOnly && !product.isNew) return false;
+      
+      // Filtro por Sale
+      if (showSaleOnly && !product.onSale) return false;
+      
+      return true;
+    });
+  }, [products, selectedCategory, searchQuery, priceRange, selectedTags, showNewOnly, showSaleOnly]);
 
-  const applyFilters = () => {
-    let filteredProducts = [...products];
+  const sortedProducts = useMemo(() => {
+    return [...filteredProducts].sort((a, b) => {
+      switch (sortBy) {
+        case 'price_asc':
+          return a.price - b.price;
+        case 'price_desc':
+          return b.price - a.price;
+        case 'name_asc':
+          return a.name.localeCompare(b.name);
+        case 'name_desc':
+          return b.name.localeCompare(a.name);
+        default:
+          return 0;
+      }
+    });
+  }, [filteredProducts, sortBy]);
 
-    if (selectedCategory) {
-      filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
-    }
+  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentProducts = sortedProducts.slice(startIndex, endIndex);
 
-    switch (sortBy) {
-      case 'price_asc':
-        filteredProducts.sort((a, b) => a.price - b.price);
-        break;
-      case 'price_desc':
-        filteredProducts.sort((a, b) => b.price - a.price);
-        break;
-      default:
-       
-        break;
-    }
-
-    return filteredProducts;
-  };
-
-  const calculatePagination = () => {
-    const startIndex = (currentPage - 1) * visibleCount;
-    const endIndex = Math.min(startIndex + visibleCount, filteredAndSortedProducts.length);
-    return { startIndex, endIndex };
-  };
-
-  const filteredAndSortedProducts = applyFilters();
-  const totalPages = Math.ceil(filteredAndSortedProducts.length / visibleCount);
-
-  const goToPage = (page: number) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const goToPrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price).replace('IDR', 'Rp');
   };
 
   const renderPageNumbers = () => {
-    const maxPagesToShow = 4; 
     const pages = [];
-    const startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-    const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
-   
-    if (startPage > 1) {
-      pages.push(
-        <p key={"first"} onClick={() => goToPage(1)}>
-          <span>{"<<"}</span>
-        </p>
-      );
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
     }
-
-
-    if (startPage > 2) {
-      pages.push(
-        <p key={"..."}><span>{"..."}</span></p>
-      );
-    }
-
 
     for (let i = startPage; i <= endPage; i++) {
       pages.push(
-        <p key={i} className={currentPage === i ? styles.active : ''} onClick={() => goToPage(i)}>
-          <span>{i}</span>
-        </p>
-      );
-    }
-
-    if (endPage < totalPages - 1) {
-      pages.push(
-        <p key={"..."}><span>{"..."}</span></p>
-      );
-    }
-
-    if (endPage < totalPages) {
-      pages.push(
-        <p key={totalPages} onClick={() => goToPage(totalPages)}>
-          <span>{">>"}</span>
-        </p>
+        <PageButton
+          key={i}
+          active={currentPage === i}
+          onClick={() => handlePageChange(i)}
+        >
+          {i}
+        </PageButton>
       );
     }
 
     return pages;
   };
 
-  const { startIndex, endIndex } = calculatePagination();
-  const canGoPrev = currentPage > 1;
-  const canGoNext = currentPage < totalPages;
 
-  const currentProducts = filteredAndSortedProducts.slice(startIndex, endIndex);
 
   return (
-    <>
-      <div className={styles.header}>
-        <div className={styles.path}>
+    <Container>
+      <Header>
+        <Path>
           <h2>Shop</h2>
-          <div className={styles.pathWrapper}>
+          <PathWrapper>
             <p>Home</p>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/dashicons_arrow-down-alt2.svg" alt="" />
+            <CaretRight size={20} />
             <p>Shop</p>
-          </div>
-        </div>
-      </div>
+          </PathWrapper>
+        </Path>
+      </Header>
 
-      <div className={styles.menu}>
-        <div className={styles.left}>
-          <div className={styles.filter}>
-            <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/filter.svg" alt="Filter Icon" />
-            <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)}>
-              <option value="">All</option>
-              <option value="Chairs">Chairs</option>
-              <option value="Sofa">Sofa</option>
-              <option value="Tables and Stools">Tables and Stools</option>
-              <option value="Lamps">Lamps</option>
-              <option value="Mugs">Mugs</option>
-              <option value="Beds">Beds</option>
-              <option value="Decor">Decor</option>
-            </select>
-          </div>
-          <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/grid-round.svg" alt="Grid View" />
-          <img src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/viewslist.png" alt="List View" />
-          <div className={styles.showing}>
-            <p>Showing {startIndex + 1}–{Math.min(endIndex, filteredAndSortedProducts.length)} of {filteredAndSortedProducts.length} results</p>
-          </div>
-        </div>
+      <Menu>
+        <MenuContent>
+          <FilterSection>
+            <FilterButton onClick={() => setShowFilters(true)}>
+              <Funnel size={24} />
+              Filters
+            </FilterButton>
 
-        <div className={styles.showShort}>
-          <div className={styles.show}>
-            <p>Show</p>
-            <select className={styles.showNumber} value={visibleCount} onChange={(e) => setVisibleCount(parseInt(e.target.value))}>
-              <option value="16">16</option>
-              <option value="32">32</option>
-              <option value="48">48</option>
-            </select>
-          </div>
-          <div className={styles.shortBy}>
-            <p>Sort by</p>
-            <select className={styles.shortOptions} value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-              <option value="default">Default</option>
+            <ViewOptions>
+              <SquaresFour 
+                size={24} 
+                weight={viewMode === 'grid' ? 'fill' : 'regular'}
+                onClick={() => setViewMode('grid')}
+              />
+              <List 
+                size={24}
+                weight={viewMode === 'list' ? 'fill' : 'regular'}
+                onClick={() => setViewMode('list')}
+              />
+              <ResultCount>
+                Showing {startIndex + 1}–{Math.min(endIndex, sortedProducts.length)} of {sortedProducts.length} results
+              </ResultCount>
+            </ViewOptions>
+          </FilterSection>
+
+          <SortSection>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="default">Default sorting</option>
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
+              <option value="name_asc">Name: A to Z</option>
+              <option value="name_desc">Name: Z to A</option>
             </select>
-          </div>
-        </div>
-      </div>
+          </SortSection>
+        </MenuContent>
+      </Menu>
 
-      <div className={styles.productsWrapper}>
-        {currentProducts.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
+      <Content>
+        <MobileFilters show={showFilters}>
+          <CloseButton onClick={() => setShowFilters(false)}>
+            <X size={24} />
+          </CloseButton>
 
-      <div className={styles.pagination}>
-        <div className={styles.pages}>
-          <button onClick={goToPrevPage} disabled={!canGoPrev}>Prev</button>
-          {renderPageNumbers()}
-          <button onClick={goToNextPage} disabled={!canGoNext}>Next</button>
-        </div>
-      </div>
+          <FilterContainer>
+            <FilterTitle>Search</FilterTitle>
+            <SearchInputWrapper>
+              <StyledInput
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <IconWrapper>
+                <MagnifyingGlass size={20} />
+              </IconWrapper>
+            </SearchInputWrapper>
 
-    
-       <Commitment/>
+            <FilterTitle>Category</FilterTitle>
+            <select 
+              value={selectedCategory} 
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              {CATEGORIES.map(category => (
+                <option key={category} value={category === 'All' ? '' : category}>
+                  {category}
+                </option>
+              ))}
+            </select>
 
-    </>
+            <FilterTitle>Price Range</FilterTitle>
+            <PriceRange>
+              <RangeValues>
+                <span>{formatPrice(priceRange[0])}</span>
+                <span>{formatPrice(priceRange[1])}</span>
+              </RangeValues>
+              <RangeInput
+                type="range"
+                min={Math.min(...products.map(p => p.price))}
+                max={Math.max(...products.map(p => p.price))}
+                value={priceRange[1]}
+                onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+              />
+            </PriceRange>
+
+            <FilterTitle>Product Status</FilterTitle>
+            <FilterGroup>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={showNewOnly}
+                  onChange={(e) => setShowNewOnly(e.target.checked)}
+                />
+                New Arrivals
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={showSaleOnly}
+                  onChange={(e) => setShowSaleOnly(e.target.checked)}
+                />
+                On Sale
+              </label>
+            </FilterGroup>
+
+            <FilterTitle>Tags</FilterTitle>
+            <TagsContainer>
+              {allTags.map(tag => (
+                <TagButton
+                  key={tag}
+                  active={selectedTags.includes(tag)}
+                  onClick={() => toggleTag(tag)}
+                >
+                  {tag}
+                </TagButton>
+              ))}
+            </TagsContainer>
+
+            <ApplyButton onClick={() => setShowFilters(false)}>
+              Apply Filters
+            </ApplyButton>
+          </FilterContainer>
+        </MobileFilters>
+
+        <ProductGrid viewMode={viewMode}>
+          {currentProducts.map(product => (
+            <Product key={product.id} product={product} />
+          ))}
+        </ProductGrid>
+
+        <Pagination>
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            <ArrowLeft size={24} />
+          </button>
+
+          <PageNumbers>
+            {renderPageNumbers()}
+          </PageNumbers>
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <ArrowRight size={24} />
+          </button>
+        </Pagination>
+      </Content>
+      <Commitment />
+    </Container>
   );
 };
-
-

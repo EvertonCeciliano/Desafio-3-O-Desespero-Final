@@ -1,193 +1,127 @@
-
-
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
-import { saveContact } from '../../ContactStore/ContactSlice';
-import styles from './Contact.module.css';
-import { Path } from '../../Components/Path/Path';
-import { Commitment } from '../../Components/Commitment/Commitment';
+import { CaretRight, EnvelopeSimple, Phone, MapPin } from '@phosphor-icons/react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import * as S from './styles';
 
-interface FormState {
+type FormData = {
   name: string;
   email: string;
   subject: string;
   message: string;
-}
+};
 
-export const Contact: React.FC = () => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState<FormState>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [nameError, setNameError] = useState<string>('');
-  const [emailError, setEmailError] = useState<string>('');
+export function Contact() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    switch (name) {
-      case 'name':
-        if (value.length < 3 || /\d/.test(value)) {
-          setNameError('Name must be at least 3 characters long and cannot contain numbers.');
-        } else {
-          setNameError('');
-        }
-        break;
-      case 'email':
-        if (!/\S+@\S+\.\S+/.test(value)) {
-          setEmailError('Please enter a valid email address.');
-        } else {
-          setEmailError('');
-        }
-        break;
-      default:
-        break;
+  const onSubmit = async (data: FormData) => {
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success('Message sent successfully!');
+      reset();
+    } catch (error) {
+      toast.error('Error sending message. Please try again.');
     }
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.email.trim()) {
-      toast.error('Name and email are required.');
-      return;
-    }
-
-    if (nameError || emailError) {
-      toast.error('Please correct the errors in the form.');
-      return;
-    }
-
-    dispatch(saveContact(formData));
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    toast.success('Contato salvo com sucesso!');
   };
 
   return (
-    <>
-      <Path title='Contact'>
+    <S.Container>
+      <S.PathContainer>
         <p>Home</p>
-        <img
-          src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/dashicons_arrow-down-alt2.svg"
-          alt="Arrow"
-        />
+        <CaretRight size={16} weight="bold" />
         <p>Contact</p>
-      </Path>
+      </S.PathContainer>
 
-      <div className={styles.contact}>
-        <div className={styles.title}>
-          <h2>Get In Touch With Us</h2>
-          <p>
-            For More Information About Our Product & Services. Please Feel Free To Drop Us An
-            Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!
-          </p>
-        </div>
-        <div className={styles.contactSection}>
-          <div className={styles.contacts}>
-            <div className={styles.contactInfo}>
-              <div className={styles.infoItem}>
-                <img
-                  src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/address.svg"
-                  alt="Address Icon"
-                  className={styles.icon}
-                />
-                <div>
-                  <h4>Address</h4>
-                  <p>236 5th SE Avenue, New York NY10000, United States</p>
-                </div>
+      <S.ContactGrid>
+        <S.InfoCard>
+          <S.Title>Contact Us</S.Title>
+          <S.Description>
+            Do you have any questions or suggestions? We will be happy to help!
+          </S.Description>
+
+          <S.ContactInfo>
+            <S.InfoItem>
+              <EnvelopeSimple size={24} weight="bold" />
+              <div>
+                <S.InfoLabel>Email</S.InfoLabel>
+                <S.InfoText>contact@example.com</S.InfoText>
               </div>
-              <div className={styles.infoItem}>
-                <img
-                  src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/phone.svg"
-                  alt="Phone Icon"
-                  className={styles.icon}
-                />
-                <div>
-                  <h4>Phone</h4>
-                  <p>
-                    Mobile: +(84) 546-6789
-                    <br />
-                    Hotline: +(84) 456-6789
-                  </p>
-                </div>
+            </S.InfoItem>
+
+            <S.InfoItem>
+              <Phone size={24} weight="bold" />
+              <div>
+                <S.InfoLabel>Phone</S.InfoLabel>
+                <S.InfoText>(11) 99999-9999</S.InfoText>
               </div>
-              <div className={styles.infoItem}>
-                <img
-                  src="https://aws-compass-desafio3.s3.us-east-2.amazonaws.com/clock.svg"
-                  alt="Working Time Icon"
-                  className={styles.icon}
-                />
-                <div>
-                  <h4>Working Time</h4>
-                  <p>
-                    Monday-Friday: 9:00 - 22:00
-                    <br />
-                    Saturday-Sunday: 9:00 - 21:00
-                  </p>
-                </div>
+            </S.InfoItem>
+
+            <S.InfoItem>
+              <MapPin size={24} weight="bold" />
+              <div>
+                <S.InfoLabel>Address</S.InfoLabel>
+                <S.InfoText>Example Street, 123 - São Paulo, SP</S.InfoText>
               </div>
-            </div>
-            <div className={styles.inputSection}>
-              <div className={styles.inputWrapper}>
-                <label>Your name</label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Abc"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={nameError || !formData.name.trim() ? styles.invalid : ''}
-                />
-                {nameError && <span className={styles.error}>{nameError}</span>}
-              </div>
-              <div className={styles.inputWrapper}>
-                <label>Email address</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="abc@def.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={emailError || !formData.email.trim() ? styles.invalid : ''}
-                />
-                {emailError && <span className={styles.error}>{emailError}</span>}
-              </div>
-              <div className={styles.inputWrapper}>
-                <label>Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="This is optional"
-                  value={formData.subject}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className={styles.inputWrapper}>
-                <label>Message</label>
-                <textarea
-                  name="message"
-                  placeholder="Hi! I'd like to ask about..."
-                  value={formData.message}
-                  onChange={handleChange}
-                ></textarea>
-              </div>
-              <button onClick={handleSubmit}>Submit</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Commitment />
-    </>
+            </S.InfoItem>
+          </S.ContactInfo>
+        </S.InfoCard>
+
+        <S.FormCard>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <S.FormGroup>
+              <S.Label>Name</S.Label>
+              <S.Input
+                {...register('name', { required: 'Name is required' })}
+                className={errors.name ? 'error' : ''}
+              />
+              {errors.name && <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>}
+            </S.FormGroup>
+
+            <S.FormGroup>
+              <S.Label>Email</S.Label>
+              <S.Input
+                type="email"
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email',
+                  },
+                })}
+                className={errors.email ? 'error' : ''}
+              />
+              {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+            </S.FormGroup>
+
+            <S.FormGroup>
+              <S.Label>Subject</S.Label>
+              <S.Input
+                {...register('subject', { required: 'Subject is required' })}
+                className={errors.subject ? 'error' : ''}
+              />
+              {errors.subject && <S.ErrorMessage>{errors.subject.message}</S.ErrorMessage>}
+            </S.FormGroup>
+
+            <S.FormGroup>
+              <S.Label>Message</S.Label>
+              <S.TextArea
+                {...register('message', { required: 'Message is required' })}
+                className={errors.message ? 'error' : ''}
+                rows={5}
+              />
+              {errors.message && <S.ErrorMessage>{errors.message.message}</S.ErrorMessage>}
+            </S.FormGroup>
+
+            <S.SubmitButton type="submit">
+              Send Message
+            </S.SubmitButton>
+          </form>
+        </S.FormCard>
+      </S.ContactGrid>
+    </S.Container>
   );
-};
+}

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../CartStore/CartSlice';
+import { api } from '../../services/api';
 
 import { CaretRight } from '@phosphor-icons/react';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 import { Product, ProductData } from '../../Components/ProductCard/Product';
 import {
   Container,
@@ -47,16 +47,14 @@ export const ProductDetails: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/products/${id}`);
-        setProduct(response.data);
+        const productData = await api.getProductById(Number(id));
+        setProduct(productData || null);
         setLoading(false);
 
-        // Fetch related products from the same category
-        const relatedResponse = await axios.get('http://localhost:3001/products');
-        const filtered = relatedResponse.data
-          .filter((p: ProductData) => p.category === response.data.category && p.id !== response.data.id)
-          .slice(0, 4);
-        setRelatedProducts(filtered);
+        if (productData) {
+          const relatedProducts = await api.getRelatedProducts(productData.category, productData.id);
+          setRelatedProducts(relatedProducts);
+        }
       } catch (error) {
         console.error('Error fetching product:', error);
         setLoading(false);
@@ -112,7 +110,6 @@ export const ProductDetails: React.FC = () => {
     ? calculateDiscountPrice(product.price, product.discountPercentage)
     : null;
 
-  // Simulate multiple product images (in a real app, this would come from the API)
   const productImages = [
     product.image,
     product.image,

@@ -23,11 +23,7 @@ import {
   AddToCartButton,
   FeatureValue,
   RemoveButton,
-  MobileProductCard,
-  MobileProductHeader,
-  MobileFeatureGrid,
-  MobileLabel,
-  MobileValue,
+
   DesktopCompareGrid
 } from './styles';
 
@@ -53,25 +49,11 @@ interface Feature {
 }
 
 export const Compare: React.FC = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const compareItems = useSelector((state: RootState) => state.compare.items);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(price).replace('IDR', 'Rp');
-  };
-
-  const calculateDiscountPrice = (price: number, discount: number) => {
-    return Math.floor(price - (price * discount) / 100);
-  };
-
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: ProductData) => {
     dispatch(addToCart(product));
     toast.success('Item added to cart successfully!');
   };
@@ -93,6 +75,19 @@ export const Compare: React.FC = () => {
     { key: 'onSale', label: 'On Sale' }
   ];
 
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price).replace('IDR', 'Rp');
+  };
+
+  const calculateDiscountPrice = (price: number, discount: number) => {
+    return Math.floor(price - (price * discount) / 100);
+  };
+
   return (
     <Container>
       <Header>
@@ -109,111 +104,64 @@ export const Compare: React.FC = () => {
       </Header>
 
       <Content>
-        {/* Versão Mobile */}
-        {compareItems.map(product => {
-          const discountedPrice = product.onSale
-            ? calculateDiscountPrice(product.price, product.discountPercentage)
-            : null;
-
-          return (
-            <MobileProductCard key={product.id}>
-              <MobileProductHeader>
-                <RemoveButton onClick={() => handleRemoveFromCompare(product.id)}>
-                  <X size={20} />
-                </RemoveButton>
-                <img src={product.image} alt={product.name} />
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <PriceInfo>
-                  {discountedPrice ? (
-                    <>
-                      <Price>{formatPrice(discountedPrice)}</Price>
-                      <DiscountPrice>{formatPrice(product.price)}</DiscountPrice>
-                    </>
-                  ) : (
-                    <Price>{formatPrice(product.price)}</Price>
-                  )}
-                </PriceInfo>
-                <AddToCartButton onClick={() => handleAddToCart(product)}>
-                  Add to Cart
-                </AddToCartButton>
-              </MobileProductHeader>
-
-              <MobileFeatureGrid>
+        {compareItems.length > 1 ? (
+          <DesktopCompareGrid>
+            <CompareGrid>
+              <div>
+                <FeatureLabel></FeatureLabel>
                 {features.map(feature => (
-                  <React.Fragment key={feature.key}>
-                    <MobileLabel>{feature.label}</MobileLabel>
-                    <MobileValue>
-                      {feature.key === 'tags' ? (
-                        product[feature.key].join(', ')
-                      ) : feature.key === 'isNew' || feature.key === 'onSale' ? (
-                        product[feature.key] ? <Check size={16} /> : <X size={16} />
-                      ) : (
-                        product[feature.key]
-                      )}
-                    </MobileValue>
-                  </React.Fragment>
+                  <FeatureLabel key={feature.key}>{feature.label}</FeatureLabel>
                 ))}
-              </MobileFeatureGrid>
-            </MobileProductCard>
-          );
-        })}
+              </div>
 
-        {/* Versão Desktop */}
-        <DesktopCompareGrid>
-          <CompareGrid>
-            <div>
-              <FeatureLabel></FeatureLabel>
-              {features.map(feature => (
-                <FeatureLabel key={feature.key}>{feature.label}</FeatureLabel>
-              ))}
-            </div>
+              {compareItems.map(product => {
+                const discountedPrice = product.onSale
+                  ? calculateDiscountPrice(product.price, product.discountPercentage)
+                  : null;
 
-            {compareItems.map(product => {
-              const discountedPrice = product.onSale
-                ? calculateDiscountPrice(product.price, product.discountPercentage)
-                : null;
+                return (
+                  <ProductColumn key={product.id}>
+                    <ProductHeader>
+                      <RemoveButton onClick={() => handleRemoveFromCompare(product.id)}>
+                        <X size={20} />
+                      </RemoveButton>
+                      <img src={product.image} alt={product.name} />
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
+                      <PriceInfo>
+                        {discountedPrice ? (
+                          <>
+                            <Price>{formatPrice(discountedPrice)}</Price>
+                            <DiscountPrice>{formatPrice(product.price)}</DiscountPrice>
+                          </>
+                        ) : (
+                          <Price>{formatPrice(product.price)}</Price>
+                        )}
+                      </PriceInfo>
+                      <AddToCartButton onClick={() => handleAddToCart(product)}>
+                        Add to Cart
+                      </AddToCartButton>
+                    </ProductHeader>
 
-              return (
-                <ProductColumn key={product.id}>
-                  <ProductHeader>
-                    <RemoveButton onClick={() => handleRemoveFromCompare(product.id)}>
-                      <X size={20} />
-                    </RemoveButton>
-                    <img src={product.image} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <PriceInfo>
-                      {discountedPrice ? (
-                        <>
-                          <Price>{formatPrice(discountedPrice)}</Price>
-                          <DiscountPrice>{formatPrice(product.price)}</DiscountPrice>
-                        </>
-                      ) : (
-                        <Price>{formatPrice(product.price)}</Price>
-                      )}
-                    </PriceInfo>
-                    <AddToCartButton onClick={() => handleAddToCart(product)}>
-                      Add to Cart
-                    </AddToCartButton>
-                  </ProductHeader>
-
-                  {features.map(feature => (
-                    <FeatureValue key={feature.key}>
-                      {feature.key === 'tags' ? (
-                        product[feature.key].join(', ')
-                      ) : feature.key === 'isNew' || feature.key === 'onSale' ? (
-                        product[feature.key] ? <Check size={20} /> : <X size={20} />
-                      ) : (
-                        product[feature.key]
-                      )}
-                    </FeatureValue>
-                  ))}
-                </ProductColumn>
-              );
-            })}
-          </CompareGrid>
-        </DesktopCompareGrid>
+                    {features.map(feature => (
+                      <FeatureValue key={feature.key}>
+                        {feature.key === 'tags' ? (
+                          product[feature.key].join(', ')
+                        ) : feature.key === 'isNew' || feature.key === 'onSale' ? (
+                          product[feature.key] ? <Check size={20} /> : <X size={20} />
+                        ) : (
+                          product[feature.key]
+                        )}
+                      </FeatureValue>
+                    ))}
+                  </ProductColumn>
+                );
+              })}
+            </CompareGrid>
+          </DesktopCompareGrid>
+        ) : (
+          <p>Compare at least 2 products</p>
+        )}
       </Content>
     </Container>
   );

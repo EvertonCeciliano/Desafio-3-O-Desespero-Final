@@ -1,4 +1,3 @@
-// Counter.tsx
 import React from 'react';
 import { CounterContainer, CounterButton, Quantity } from './styles';
 

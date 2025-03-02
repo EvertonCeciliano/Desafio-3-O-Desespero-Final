@@ -1,22 +1,26 @@
-# FURINO
+# FURINO 🛋️
 
-FURINO é uma aplicação de e-commerce desenvolvida em React TypeScript, utilizando o Vite como ferramenta de build. Este projeto visa proporcionar uma experiência de compra online rápida e intuitiva.
+FURINO é uma aplicação de e-commerce moderna desenvolvida em React TypeScript, utilizando o Vite como ferramenta de build. Este projeto oferece uma experiência de compra online elegante e intuitiva para móveis e decoração.
 
-## Sumário
+## 📋 Sumário
 
 - [Instalação](#instalação)
    - [Requisitos](#requisitos)
    - [Passos para Instalação](#passos-para-instalação)
 - [Scripts Disponíveis](#scripts-disponíveis)
+- [Funcionalidades](#funcionalidades)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Dependências](#dependências)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Contribuição](#contribuição)
 
-## Instalação
+## 🚀 Instalação
 
 ### Requisitos
 
-Antes de começar, certifique-se de ter o Node.js e npm ou yarn instalados na sua máquina. Você pode baixá-los em [Node.js](https://nodejs.org/).
+- Node.js (versão 14 ou superior)
+- npm ou yarn
+- Git
 
 ### Passos para Instalação
 
@@ -29,68 +33,84 @@ Antes de começar, certifique-se de ter o Node.js e npm ou yarn instalados na su
 
 2. Instale as dependências do projeto usando npm ou yarn:
 
-    Com npm:
-    
     ```bash
     npm install
     ```
 
-    Com yarn:
-    
-    ```bash
-    yarn install
-    ```
-
 3. Inicie a aplicação em modo de desenvolvimento:
 
-    Com npm:
-    
     ```bash
     npm run dev
     ```
 
-    Com yarn:
-    
-    ```bash
-    yarn dev
-    ```
+4. Abra o navegador e acesse `http://localhost:5173` para ver a aplicação em execução.
 
-4. Abra o navegador e acesse `http://localhost:3000` para ver a aplicação em execução.
+## 🛠️ Scripts Disponíveis
 
-## Scripts Disponíveis
+- `npm run dev`: Inicia a aplicação em modo de desenvolvimento
+- `npm run build`: Compila a aplicação para produção
+- `npm run preview`: Visualiza a build de produção localmente
+- `npm run lint`: Executa a verificação de linting do código
 
-No diretório do projeto, você pode executar:
+## ✨ Funcionalidades
 
-- `npm run dev` ou `yarn dev`: Inicia a aplicação em modo de desenvolvimento.
-- `npm run build` ou `yarn build`: Compila a aplicação para produção na pasta `dist`.
-- `npm run preview` ou `yarn preview`: Visualiza a build de produção localmente.
-- `npm run db`: Inicia o servidor JSON Server para simular uma API REST.
+- 🏠 **Página Inicial**: Showcase dos produtos em destaque e categorias
+- 🛍️ **Loja**: Listagem completa de produtos com filtros e ordenação
+- 🔍 **Busca**: Sistema de busca avançado por nome e categoria
+- 🛒 **Carrinho**: Gerenciamento completo do carrinho de compras
+- 💖 **Lista de Desejos**: Salve seus produtos favoritos
+- 🔄 **Comparação**: Compare diferentes produtos lado a lado
+- 📱 **Responsivo**: Interface adaptável para todos os dispositivos
+- 📝 **Contato**: Formulário de contato com validação
+- 🔐 **Autenticação**: Sistema de login e registro integrado com Firebase
 
-## Dependências
+## 📁 Estrutura do Projeto
 
-Este projeto utiliza as seguintes dependências:
+```
+src/
+├── components/     # Componentes reutilizáveis
+├── pages/         # Páginas da aplicação
+├── store/         # Configuração e estados Redux
+├── services/      # Serviços e APIs
+├── types/         # Tipos TypeScript
+├── styles/        # Estilos globais e temas
+└── utils/         # Funções utilitárias
+```
 
-- `@reduxjs/toolkit`: ^2.2.5
-- `@splidejs/splide`: ^4.1.4
-- `axios`: ^1.7.2
-- `firebase`: ^10.12.2
-- `json-server`: ^1.0.0-beta.1
-- `react`: ^18.2.0
-- `react-dom`: ^18.2.0
-- `react-firebase-hooks`: ^5.1.1
-- `react-redux`: ^9.1.2
-- `react-router`: ^6.23.1
-- `react-router-dom`: ^6.23.1
-- `react-splide-ts`: ^0.7.14
-- `react-toastify`: ^10.0.5
-- `redux`: ^5.0.1
-- `redux-persist`: ^6.0.0
-- `redux-thunk`: ^3.1.0
+## 📦 Dependências Principais
 
-## Tecnologias Utilizadas
+- `@reduxjs/toolkit` e `redux`: Gerenciamento de estado
+- `@splidejs/splide`: Carrossel de imagens
+- `axios`: Cliente HTTP
+- `firebase`: Autenticação e backend
+- `react-router-dom`: Roteamento
+- `styled-components`: Estilização
+- `react-toastify`: Notificações
+- `react-hook-form`: Gerenciamento de formulários
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [Firebase](https://firebase.google.com/)
-- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+## 🛡️ Tecnologias Utilizadas
+
+- ⚛️ React 18
+- 📘 TypeScript
+- ⚡ Vite
+- 🔥 Firebase
+- 💅 Styled Components
+- 🔄 Redux Toolkit
+- 🎨 Phosphor Icons
+- 🌐 Axios
+- 📱 Design Responsivo
+
+## 🤝 Contribuição
+
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+
+## 👥 Autor
+
+- [Everton Ceciliano](https://github.com/EvertonCeciliano)
+
+⭐️ Se este projeto te ajudou, considere dar uma estrela!

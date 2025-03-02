@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Product, ProductData } from "../../Components/ProductCard/Product";
 import { Button } from "../../Components/Button/Button";
 import { CaretLeft, CaretRight, Star } from "@phosphor-icons/react";
-import axios from "axios";
+import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
@@ -61,8 +61,8 @@ export function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/products");
-        setProducts(response.data);
+        const products = await api.getAllProducts();
+        setProducts(products);
       } catch (error) {
         console.error("Erro na requisição:", error);
       }
@@ -104,7 +104,7 @@ export function Home() {
               <h2>{slide.subtitle}</h2>
               <h1>{slide.title}</h1>
               <p>{slide.description}</p>
-              <button onClick={() => navigate('/shop')}>COMPRAR AGORA</button>
+              <button onClick={() => navigate('/shop')}>BUY NOW</button>
             </S.CarouselContent>
           </S.CarouselSlide>
         ))}
@@ -169,7 +169,7 @@ export function Home() {
       </S.Products>
 
       <S.TestimonialSection>
-        <h2>O que nossos clientes dizem</h2>
+        <h2>What our customers say</h2>
         <S.TestimonialContainer>
           {testimonialData.map((testimonial, index) => (
             <S.TestimonialSlide

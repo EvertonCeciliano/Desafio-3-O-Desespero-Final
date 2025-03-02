@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
 import { Product, ProductData } from '../../Components/ProductCard/Product';
 import { Commitment } from '../../Components/Commitment/Commitment';
 import {
@@ -42,6 +41,7 @@ import {
   X
 } from '@phosphor-icons/react';
 import styled from 'styled-components';
+import { api } from '../../services/api';
 
 const ITEMS_PER_PAGE = 12;
 const CATEGORIES = [
@@ -88,7 +88,6 @@ export const Shop: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
   
-  // Novos estados para filtros
   const [searchQuery, setSearchQuery] = useState('');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000000]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -98,10 +97,10 @@ export const Shop: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/products");
-        setProducts(response.data);
-        // Definir o range de preço baseado nos produtos
-        const prices = response.data.map((p: ProductData) => p.price);
+        const products = await api.getAllProducts();
+        setProducts(products);
+     
+        const prices = products.map((p: ProductData) => p.price);
         setPriceRange([Math.min(...prices), Math.max(...prices)]);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -110,7 +109,6 @@ export const Shop: React.FC = () => {
     fetchProducts();
   }, []);
 
-  // Extrair todas as tags únicas dos produtos
   const allTags = useMemo(() => {
     const tags = new Set<string>();
     products.forEach(product => {
@@ -129,22 +127,16 @@ export const Shop: React.FC = () => {
 
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
-      // Filtro por categoria
       if (selectedCategory && product.category !== selectedCategory) return false;
       
-      // Filtro por busca
       if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
       
-      // Filtro por preço
       if (product.price < priceRange[0] || product.price > priceRange[1]) return false;
       
-      // Filtro por tags
       if (selectedTags.length > 0 && !selectedTags.some(tag => product.tags.includes(tag))) return false;
       
-      // Filtro por New
       if (showNewOnly && !product.isNew) return false;
       
-      // Filtro por Sale
       if (showSaleOnly && !product.onSale) return false;
       
       return true;

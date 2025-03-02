@@ -1,16 +1,15 @@
 import { CaretRight, EnvelopeSimple, Phone, MapPin } from '@phosphor-icons/react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { saveContact } from '../../store/actions/contactActions';
+import { ContactFormData } from '../../types/contact';
 import * as S from './styles';
 
-type FormData = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+type FormData = ContactFormData;
 
 export function Contact() {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -21,11 +20,11 @@ export function Contact() {
   const onSubmit = async (data: FormData) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log(data); // Use the data parameter
+      dispatch(saveContact(data));
       toast.success('Message sent successfully!');
       reset();
     } catch (error) {
-      toast.error('Error sending message. Please try again.');
+      toast.error('Error sending message');
     }
   };
 

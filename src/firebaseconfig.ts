@@ -1,18 +1,16 @@
-
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBGS2gVXFDX0Ht113K5tfEl9eVK5AWZMPc",
-  authDomain: "aws-react-desafio3.firebaseapp.com",
-  projectId: "aws-react-desafio3",
-  storageBucket: "aws-react-desafio3.appspot.com",
-  messagingSenderId: "577900117477",
-  appId: "1:577900117477:web:0d8539683c1d1c1567830c",
-  measurementId: "G-7BD5JX6HSJ"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
-
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

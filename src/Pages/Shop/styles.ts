@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -285,7 +285,7 @@ export const RangeInput = styled.input`
   height: 2px;
   background: #E8E8E8;
   outline: none;
-  -webkit-appearance: none;
+
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;

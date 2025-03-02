@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { HeaderContainer, NavBar, MenuList, CartContainer, CartActions, IconContainer } from './styles';
+import { HeaderContainer, NavBar, CartContainer, CartActions, IconContainer } from './styles';
 import { CartModal } from '../CartModal/CartModal';
 import { WishlistModal } from '../WishlistModal/WishlistModal';
 import { ShoppingCart, User, Heart } from '@phosphor-icons/react';

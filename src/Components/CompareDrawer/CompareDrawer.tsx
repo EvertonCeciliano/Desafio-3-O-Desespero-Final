@@ -13,7 +13,6 @@ import {
   RemoveButton,
   ProductImage,
   ProductInfo,
-  CompareButton,
   EmptyState
 } from './styles';
 

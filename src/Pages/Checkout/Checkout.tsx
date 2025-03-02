@@ -36,9 +36,10 @@ export function Checkout() {
   }, 0);
 
   const onSubmit = async (data: FormData) => {
+    console.log(data);
     setIsLoading(true);
     try {
-      // Simulate processing
+    
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       toast.success('Order placed successfully!');

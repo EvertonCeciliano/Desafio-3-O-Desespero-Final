@@ -33,13 +33,13 @@ export const Cart = () => {
           </div>
           <QuantityControl>
             <button
-              onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}
+              onClick={() => dispatch(updateQuantity({ productId: item.id, quantity: item.quantity - 1 }))}
             >
               <FaMinus />
             </button>
             <span>{item.quantity}</span>
             <button
-              onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}
+              onClick={() => dispatch(updateQuantity({ productId: item.id, quantity: item.quantity + 1 }))}
             >
               <FaPlus />
             </button>

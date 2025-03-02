@@ -21,6 +21,7 @@ export function Contact() {
   const onSubmit = async (data: FormData) => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log(data); // Use the data parameter
       toast.success('Message sent successfully!');
       reset();
     } catch (error) {

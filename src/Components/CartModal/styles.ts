@@ -37,17 +37,6 @@ const bounceIn = keyframes`
   }
 `;
 
-const shake = keyframes`
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-`;
 
 export const ModalOverlay = styled.div<{ isOpen: boolean }>`
   position: fixed;

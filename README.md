@@ -5,8 +5,8 @@ FURINO é uma aplicação de e-commerce desenvolvida em React TypeScript, utiliz
 ## Sumário
 
 - [Instalação](#instalação)
-  - [Requisitos](#requisitos)
-  - [Passos para Instalação](#passos-para-instalação)
+   - [Requisitos](#requisitos)
+   - [Passos para Instalação](#passos-para-instalação)
 - [Scripts Disponíveis](#scripts-disponíveis)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Dependências](#dependências)
@@ -21,39 +21,39 @@ Antes de começar, certifique-se de ter o Node.js e npm ou yarn instalados na su
 ### Passos para Instalação
 
 1. Clone o repositório do projeto:
-   
-   ```bash
-   git clone https://github.com/EvertonCeciliano/Desafio-3-O-Desespero-Final.git
-   cd furino
-   ```
+    
+    ```bash
+    git clone https://github.com/EvertonCeciliano/Desafio-3-O-Desespero-Final.git
+    cd Desafio-3-O-Desespero-Final
+    ```
 
 2. Instale as dependências do projeto usando npm ou yarn:
 
-   Com npm:
-   
-   ```bash
-   npm install
-   ```
+    Com npm:
+    
+    ```bash
+    npm install
+    ```
 
-   Com yarn:
-   
-   ```bash
-   yarn install
-   ```
+    Com yarn:
+    
+    ```bash
+    yarn install
+    ```
 
 3. Inicie a aplicação em modo de desenvolvimento:
 
-   Com npm:
-   
-   ```bash
-   npm run dev
-   ```
+    Com npm:
+    
+    ```bash
+    npm run dev
+    ```
 
-   Com yarn:
-   
-   ```bash
-   yarn dev
-   ```
+    Com yarn:
+    
+    ```bash
+    yarn dev
+    ```
 
 4. Abra o navegador e acesse `http://localhost:3000` para ver a aplicação em execução.
 
@@ -64,13 +64,13 @@ No diretório do projeto, você pode executar:
 - `npm run dev` ou `yarn dev`: Inicia a aplicação em modo de desenvolvimento.
 - `npm run build` ou `yarn build`: Compila a aplicação para produção na pasta `dist`.
 - `npm run preview` ou `yarn preview`: Visualiza a build de produção localmente.
+- `npm run db`: Inicia o servidor JSON Server para simular uma API REST.
 
 ## Dependências
 
 Este projeto utiliza as seguintes dependências:
 
 - `@reduxjs/toolkit`: ^2.2.5
-- `@splidejs/react-splide`: ^0.7.12
 - `@splidejs/splide`: ^4.1.4
 - `axios`: ^1.7.2
 - `firebase`: ^10.12.2
@@ -94,4 +94,3 @@ Este projeto utiliza as seguintes dependências:
 - [Vite](https://vitejs.dev/)
 - [Firebase](https://firebase.google.com/)
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
-

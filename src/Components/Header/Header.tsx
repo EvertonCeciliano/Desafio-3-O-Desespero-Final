@@ -7,7 +7,7 @@ import { ShoppingCart, User, Heart } from '@phosphor-icons/react';
 import { RootState } from '../../CartStore/store';
 import { setCartOpen } from '../../CartStore/CartSlice';
 import { setWishlistOpen } from '../../WishlistStore/WishlistSlice';
-
+import logo from "/images/logo.png"
 export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img onClick={() => navigate('/')} src="../../../public/images/logo.png" alt="Logo" />
+      <img onClick={() => navigate('/')} src={logo} />
       <NavBar>
         <li onClick={() => navigate('/')}>Home</li>
         <li onClick={() => navigate('/shop')}>Shop</li>

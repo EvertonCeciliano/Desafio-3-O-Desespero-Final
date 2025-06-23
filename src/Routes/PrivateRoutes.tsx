@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../firebaseconfig'; 
 
@@ -10,6 +10,7 @@ interface PrivateRouteProps {
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -24,7 +25,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ element }) => {
     return <div>Loading...</div>;
   }
 
-  return user ? element : <Navigate to="/login" />;
+  return user ? element : <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 export default PrivateRoute;

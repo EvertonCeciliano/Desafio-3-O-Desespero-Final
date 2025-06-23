@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { HeaderContainer, NavBar, CartContainer, CartActions, IconContainer } from './styles';
+import { HeaderContainer, NavBar, CartContainer, CartActions, IconContainer, DropdownMenu } from './styles';
 import { CartModal } from '../CartModal/CartModal';
 import { WishlistModal } from '../WishlistModal/WishlistModal';
 import { ShoppingCart, User, Heart } from '@phosphor-icons/react';
@@ -8,11 +8,28 @@ import { RootState } from '../../CartStore/store';
 import { setCartOpen } from '../../CartStore/CartSlice';
 import { setWishlistOpen } from '../../WishlistStore/WishlistSlice';
 import logo from "/images/logo.png"
+import { useEffect, useState, useRef } from 'react';
+import { onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
+import { auth } from '../../firebaseconfig';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+
 export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(dropdownRef, () => setIsDropdownOpen(false));
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleOpenCartModal = () => {
     dispatch(setCartOpen(true));
@@ -20,6 +37,15 @@ export function Header() {
 
   const handleOpenWishlistModal = () => {
     dispatch(setWishlistOpen(true));
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate('/');
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -34,7 +60,18 @@ export function Header() {
       <CartContainer>
         <CartActions>
           <IconContainer>
-            <User size={28} onClick={() => navigate('/login')} />
+            {user ? (
+              <div style={{ position: 'relative' }} ref={dropdownRef}>
+                <User size={28} onClick={toggleDropdown} />
+                <DropdownMenu isOpen={isDropdownOpen}>
+                  <ul>
+                    <li onClick={handleLogout}>Log Off</li>
+                  </ul>
+                </DropdownMenu>
+              </div>
+            ) : (
+              <User size={28} onClick={() => navigate('/login')} />
+            )}
             <div className="wishlist-icon">
               <Heart 
                 size={28} 

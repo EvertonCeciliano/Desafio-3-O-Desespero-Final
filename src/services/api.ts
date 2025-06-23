@@ -1,23 +1,20 @@
 import { ProductData } from '../Components/ProductCard/Product';
-import axios from 'axios';
-
-const API_URL = "https://run.mocky.io/v3/9dc08024-8994-42aa-8314-a1285883ac1e";
+import db from './db.json';
 
 export const api = {
   async getAllProducts(): Promise<ProductData[]> {
-    const response = await axios.get(API_URL);
-    return response.data.products;
+    return Promise.resolve(db.products);
   },
 
   async getProductById(id: number): Promise<ProductData | undefined> {
-    const response = await axios.get(API_URL);
-    return response.data.products.find((p: ProductData) => p.id === id);
+    const product = db.products.find((p: ProductData) => p.id === id);
+    return Promise.resolve(product);
   },
 
   async getRelatedProducts(category: string, excludeId: number): Promise<ProductData[]> {
-    const response = await axios.get(API_URL);
-    return response.data.products
+    const relatedProducts = db.products
       .filter((p: ProductData) => p.category === category && p.id !== excludeId)
       .slice(0, 4);
+    return Promise.resolve(relatedProducts);
   }
 };

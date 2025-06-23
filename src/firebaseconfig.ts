@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -22,5 +23,6 @@ auth.useDeviceLanguage(); // Use o idioma do dispositivo do usuário
 
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
+const storage = getStorage(app);
 
-export { auth, database };
+export { auth, database, storage };

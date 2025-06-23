@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseconfig';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CaretRight, GoogleLogo } from '@phosphor-icons/react';
 import * as S from './styles';
 
@@ -12,6 +12,8 @@ export function Login() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -20,7 +22,7 @@ export function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/checkout');
+      navigate(from, { replace: true });
     } catch (error) {
       setError('Email ou senha inválidos');
     } finally {
@@ -35,7 +37,7 @@ export function Login() {
 
     try {
       await signInWithPopup(auth, provider);
-      navigate('/checkout');
+      navigate(from, { replace: true });
     } catch (error) {
       setError('Erro ao fazer login com Google');
     } finally {
@@ -50,7 +52,7 @@ export function Login() {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/checkout');
+      navigate(from, { replace: true });
     } catch (error) {
       setError('Erro ao criar conta');
     } finally {

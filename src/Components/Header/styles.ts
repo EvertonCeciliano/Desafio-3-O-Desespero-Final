@@ -104,3 +104,38 @@ export const IconContainer = styled.div`
     }
   }
 `;
+
+interface DropdownMenuProps {
+  isOpen: boolean;
+}
+
+export const DropdownMenu = styled.div<DropdownMenuProps>`
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-10px)')};
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+`;
